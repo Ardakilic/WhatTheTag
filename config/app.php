@@ -144,6 +144,14 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		
+		
+		/**
+		 * WthatTheTag 3rd party Service Providers
+		 */
+		'Bkwld\Croppa\ServiceProvider',
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+		'yajra\Datatables\DatatablesServiceProvider',
 
 	],
 
@@ -192,7 +200,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-
+		
+		
+		//WthatTheTag
+		'Datatables'	=> 'yajra\Datatables\Datatables',
 	],
 
 ];

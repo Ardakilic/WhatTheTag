@@ -5,7 +5,10 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.0.*"
+		"laravel/framework": "5.0.*",
+		"cviebrock/eloquent-sluggable": "dev-master",
+		"bkwld/croppa": "~4.0",
+		"yajra/laravel-datatables-oracle": "~5.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
