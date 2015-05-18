@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Photo;
 use App\Tag;
+use DB;
 use Str;
 use Auth;
 
@@ -25,7 +26,13 @@ class PhotoController extends Controller {
 	 */
 	public function getIndex()
 	{
-		return 'List of photos will be here';
+		$photos = Photo::with('tags')
+			->random()
+			->take(12)
+			->get();
+			
+		return view('index')
+			->withPhotos($photos);
 	}
 
 	public function getNew() {
@@ -48,8 +55,7 @@ class PhotoController extends Controller {
 		}
 		
 		//Upload the image and return the filename
-		$upload			= Photo::upload($request->file('photo'), public_path().'/uploads/');
-		
+		$upload			= Photo::upload($request->file('photo'));
 		
 		//First, create(if needed) and return IDs of tags
 		$tagIds			= Tag::createAndReturnArrayOfTagIds($request->get('tags'));
@@ -66,7 +72,6 @@ class PhotoController extends Controller {
 		return redirect()
 			->back()
 			->withSuccess('Photo Created Successfully!');
-		
 		
 	}
 

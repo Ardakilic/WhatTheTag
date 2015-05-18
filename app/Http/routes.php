@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'PhotoController@getIndex');
 
 Route::get('home', 'HomeController@index');
 

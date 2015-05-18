@@ -5,8 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{$title or 'WhatTheTag'}}</title>
-
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	
+	{{-- Bootstrap CDN --}}
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -71,6 +72,13 @@
 	</nav>
 
 	@yield('content')
+
+
+<footer class="footer">
+<div class="container">
+<p class="text-muted">Place sticky footer content here.</p>
+</div>
+</footer>
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

@@ -203,6 +203,7 @@ return [
 		
 		
 		//WthatTheTag
+		'Croppa'		=> 'Bkwld\Croppa\Facade',
 		'Datatables'	=> 'yajra\Datatables\Datatables',
 	],
 

@@ -4,10 +4,12 @@ use Illuminate\Database\Eloquent\Model;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+use DB;
+
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Photo extends Model implements SluggableInterface {
+class Photo extends Model implements SluggableInterface{
 
 	use SluggableTrait;
 	
@@ -20,6 +22,10 @@ class Photo extends Model implements SluggableInterface {
 	
 	public function tags() {
 		return $this->belongsToMany('App\Tag', 'photo_tag')->withTimestamps();
+	}
+	
+	public function scopeRandom($query) {
+		return $query->orderBy(DB::raw('RAND()'));
 	}
 	
 	public static function upload(UploadedFile $file, $uploadPath = null) {
