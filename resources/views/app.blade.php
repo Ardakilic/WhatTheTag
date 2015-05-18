@@ -36,6 +36,11 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
+					
+					@if(Auth::check())
+						<li><a href="{{ url('/photo/new') }}">New Photo</a></li>
+					@endif
+					
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -43,6 +48,16 @@
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
+						
+						@if(Auth::user()->role == 'admin')
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{ url('/admin/users') }}">User Management</a></li>
+								</ul>
+							</li>
+						@endif
+					
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
