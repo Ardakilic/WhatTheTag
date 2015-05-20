@@ -34,20 +34,32 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">WhatTheTag</a>
+				<a class="navbar-brand" href="{{ url('/') }}">WhatTheTag</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
-					
+				
 					@if(Auth::check())
 						<li><a href="{{ url('/photo/new') }}">New Photo</a></li>
 					@endif
 					
 				</ul>
-
+				
 				<ul class="nav navbar-nav navbar-right">
+					
+					<li>
+						<form class="navbar-form navbar-left" role="search">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search" name="search">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</li>
+					
 					@if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
@@ -57,6 +69,7 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{ url('/admin/photos') }}">Photo Management</a></li>
 									<li><a href="{{ url('/admin/users') }}">User Management</a></li>
 								</ul>
 							</li>
@@ -69,6 +82,8 @@
 							</ul>
 						</li>
 					@endif
+					
+					
 				</ul>
 			</div>
 		</div>

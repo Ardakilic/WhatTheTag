@@ -53,6 +53,16 @@
 								<input data-role="tagsinput" style="width:100%" type="text" class="form-control" name="tags">
 							</div>
 						</div>
+						
+						<div class="form-group">
+							<div class="col-md-6 col-md-offset-4">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="read_tags_from_file"> Try to read tags from file?
+									</label>
+								</div>
+							</div>
+						</div>
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
@@ -96,6 +106,6 @@ function readURL(input) {
 $('input[name="photo"]').change(function(){
 	readURL(this);
 });
-{{-- /IMG Preview --}}
 </script>
+{{-- /IMG Preview --}}
 @endsection

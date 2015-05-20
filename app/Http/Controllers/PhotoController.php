@@ -57,13 +57,32 @@ class PhotoController extends Controller {
 		//Upload the image and return the filename
 		$upload			= Photo::upload($request->file('photo'));
 		
+		//Tag Stuff
 		//First, create(if needed) and return IDs of tags
 		$tagIds			= Tag::createAndReturnArrayOfTagIds($request->get('tags'));
+		
+		//If user wants to read the tags (keywords) from the file, then we need to fetch them from uploaded file.
+		if($request->has('read_tags_from_file')) {
+			$exif = exif_read_data($upload['fullpath'], 'ANY_TAG', true);
+			if($exif) {
+				if(array_key_exists('IFD0', $exif)) {
+					if(array_key_exists('Keywords', $exif['IFD0'])) {
+						//array_unique, because same tags may be on both the form and the file, but only one is added to the database
+						//Keywords are delimited by semicolon ( ; ) in the tag data.
+						$tagIds = array_unique(array_merge(
+								$tagIds,
+								Tag::createAndReturnArrayOfTagIds($exif['IFD0']['Keywords'], ';')
+						));
+					}
+				}
+			}
+		}
+		//Tag Stuff dnd
 		
 		$photo 			= new Photo;
 		$photo->user_id	= Auth::user()->id;
 		$photo->title 	= $request->get('title');
-		$photo->image	= $upload;
+		$photo->image	= $upload['filename'];
 		$photo->save();
 		
 		//Now attach the tags, since this is creating method, attach() is okay

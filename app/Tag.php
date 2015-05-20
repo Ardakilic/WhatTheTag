@@ -16,9 +16,14 @@ class Tag extends Model implements SluggableInterface {
 
 	protected $fillable	= ['title'];
 	
-	public static function createAndReturnArrayOfTagIds($string) {
+	public function photos() {
+		return $this->belongsToMany('App\Photo', 'photo_tag')
+			->withTimestamps();
+	}
+	
+	public static function createAndReturnArrayOfTagIds($string, $delimiter = ',') {
 		
-		$tagsArray 		= explode(",", $string);
+		$tagsArray 		= explode($delimiter, $string);
 		
 		$ids = [];
 		

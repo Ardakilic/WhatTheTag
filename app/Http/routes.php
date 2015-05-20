@@ -6,10 +6,11 @@ Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	
-	'photo'		=> 'PhotoController',
+	'photo'			=> 'PhotoController',
 	
-	'auth'		=> 'Auth\AuthController',
-	'password' 	=> 'Auth\PasswordController',
+	'auth'			=> 'Auth\AuthController',
+	'password'		=> 'Auth\PasswordController',
+	
+	'admin/users'	=> 'Admin\UserController',
+	'admin/photos'	=> 'Admin\PhotoController',
 ]);
-
-Route::controller('admin/users', 'Admin\UserController');

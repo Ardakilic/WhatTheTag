@@ -21,7 +21,12 @@ class Photo extends Model implements SluggableInterface{
 	protected $fillable = ['user_id', 'title', 'image'];
 	
 	public function tags() {
-		return $this->belongsToMany('App\Tag', 'photo_tag')->withTimestamps();
+		return $this->belongsToMany('App\Tag', 'photo_tag')
+			->withTimestamps();
+	}
+	
+	public function user() {
+		return $this->belongsTo('App\User', 'user_id');
 	}
 	
 	public function scopeRandom($query) {
@@ -42,7 +47,7 @@ class Photo extends Model implements SluggableInterface{
 		}
 		$file->move($uploadPath, $fileName);
 		
-		return $fileName;
+		return ['filename' => $fileName, 'fullpath' => $uploadPath.$fileName];
 		
 	}
 
