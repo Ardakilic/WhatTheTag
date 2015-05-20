@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a306b2e1c0d0cc794770b37f08b7aed4",
+    "hash": "a804261aad2b38f53ea642bf8ddfed51",
     "packages": [
         {
             "name": "bkwld/croppa",
@@ -117,12 +117,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "c5e96e71122e9f2bc5e8247ac1629e8413b0233d"
+                "reference": "8aaf4c4909eb2f571ba72dd7bf1ba4eca87d0f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/c5e96e71122e9f2bc5e8247ac1629e8413b0233d",
-                "reference": "c5e96e71122e9f2bc5e8247ac1629e8413b0233d",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/8aaf4c4909eb2f571ba72dd7bf1ba4eca87d0f96",
+                "reference": "8aaf4c4909eb2f571ba72dd7bf1ba4eca87d0f96",
                 "shasum": ""
             },
             "require": {
@@ -159,7 +159,7 @@
                 "laravel",
                 "slug"
             ],
-            "time": "2015-05-11 02:32:55"
+            "time": "2015-05-18 21:14:15"
         },
         {
             "name": "danielstjules/stringy",
@@ -1932,16 +1932,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v5.1.1",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "78f53c8e15dbc9cb35e9807eb476470d7868711d"
+                "reference": "a486fd95c57521e660e5698c1d51b3e0451ebd05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/78f53c8e15dbc9cb35e9807eb476470d7868711d",
-                "reference": "78f53c8e15dbc9cb35e9807eb476470d7868711d",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/a486fd95c57521e660e5698c1d51b3e0451ebd05",
+                "reference": "a486fd95c57521e660e5698c1d51b3e0451ebd05",
                 "shasum": ""
             },
             "require": {
@@ -1984,7 +1984,7 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2015-05-15 10:02:01"
+            "time": "2015-05-20 02:34:13"
         }
     ],
     "packages-dev": [
