@@ -1,7 +1,8 @@
 @extends('app')
 
 @section('header_assets')
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
+{{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" /> --}}
+<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" />
 <style type="text/css">
 #photos-table > tbody > tr > td { 
     vertical-align: middle;
@@ -19,8 +20,8 @@
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 			<div class="panel-heading clearfix">
-						
-				<div class="pull-left"><h5>List Photos</h5></div>
+				
+				<div class="pull-left"><h5><strong>List Photos</strong></h5></div>
 				<div class="pull-right"><a class="btn btn-default" href="{{ url('/photo/new') }}">New Photo</a></div>
 				
 			</div>
@@ -83,6 +84,7 @@
 
 @section('footer_assets')
 <script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 <script type="text/javascript">
 $('#photos-table').DataTable({
 	processing: true,
@@ -98,9 +100,7 @@ $('#photos-table').DataTable({
 		{data: 'action', name: 'action', orderable: false, searchable: false}
 	],
 	fnInitComplete: function() {
-		{{-- Fixes input and select box's styles according to bootstrap 3 --}}
-		$('.dataTables_filter input').addClass('form-control').css({display:'inline-block', width:'152px'});
-		$('.dataTables_length select').addClass('form-control').css({display:'inline-block', width:'60px'});
+		$('img[data-toggle="tooltip"]').tooltip();
 	}
 });
 $(document).on('click', '.delete-button', function(){

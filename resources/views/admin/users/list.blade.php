@@ -1,7 +1,8 @@
 @extends('app')
 
 @section('header_assets')
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
+{{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" /> --}}
+<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" />
 @stop
 
 @section('content')
@@ -10,8 +11,8 @@
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 			<div class="panel-heading clearfix">
-						
-				<div class="pull-left"><h5>List Users</h5></div>
+				
+				<div class="pull-left"><h5><strong>List Users</strong></h5></div>
 				<div class="pull-right"><a class="btn btn-default" href="{{ url('/admin/users/new') }}">New User</a></div>
 				
 			</div>
@@ -43,6 +44,7 @@
 
 @section('footer_assets')
 <script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 <script type="text/javascript">
 $('#users-table').DataTable({
 	processing: true,
@@ -56,12 +58,7 @@ $('#users-table').DataTable({
 		{data: 'created_at', name: 'created_at'},
 		{data: 'updated_at', name: 'updated_at'},
 		{data: 'action', name: 'action', orderable: false, searchable: false}
-	],
-	fnInitComplete: function() {
-		{{-- Fixes input and select box's styles according to bootstrap 3 --}}
-		$('.dataTables_filter input').addClass('form-control').css({display:'inline-block', width:'152px'});
-		$('.dataTables_length select').addClass('form-control').css({display:'inline-block', width:'60px'});
-	}
+	]
 });
 
 $(document).on('click', '.delete-button', function(){
