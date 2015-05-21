@@ -23,7 +23,7 @@ class AdminMiddleware {
 		//We don't need to add a second middleware
 		//this one can check whether the requester is a user, too
 		if($this->auth->guest()){
-			return response('Not authorized1', 403);
+			return response('Not authorized', 403);
 		}
 		
 		if($this->auth->user()->role != 'admin') {

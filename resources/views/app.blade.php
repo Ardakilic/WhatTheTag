@@ -50,9 +50,10 @@
 				<ul class="nav navbar-nav navbar-right">
 					
 					<li>
-						<form class="navbar-form navbar-left" role="search">
+						<form class="navbar-form navbar-left" role="search" action="/search">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search" name="search">
+								{{-- Double curly parantheses auto escape the provided string, so it's safe to use Request::get('q') below directly --}}
+								<input type="text" class="form-control" placeholder="Search photos, tags" name="q" value="{{ Request::get('q') }}">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 								</div>

@@ -16,23 +16,42 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading">Create a new Photo</div>
+				<div class="panel-heading">Editing the photo: {{ $photo->title }}</div>
 				<div class="panel-body">
 					
 					@include('partials.messages')
 
-					<form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ url('/photo/new') }}">
+					<form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ url('/admin/photos/edit/'.$photo->id) }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Title</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="title" value="{{ old('title') }}">
+								<input type="text" class="form-control" name="title" value="{{ old('title', $photo->title) }}">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-4 control-label">Owner</label>
+							<div class="col-md-6">
+								
+								<select class="form-control" name="user_id">
+									@foreach($users as $id => $name)
+										<option value="{{ $id }}"{!! old('user_id', $photo->user_id) == $id ? ' selected="selected"' : '' !!}>{{ $name }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-4 control-label">Current Photo</label>
+							<div class="col-md-6">
+								<img src="/uploads/{{ $photo->image }}" width="100%">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Photo</label>
+							<label class="col-md-4 control-label">New Photo</label>
 							<div class="col-md-6">
 								<input type="file" class="form-control" name="photo" accept="image/*">
 							</div>
@@ -50,7 +69,7 @@
 							<label class="col-md-4 control-label">Tags</label>
 							<div class="col-md-6">
 								{{-- bootstrap-tagsinput needs this to have 100% width to show properly --}}
-								<input data-role="tagsinput" style="width:100%" type="text" class="form-control" name="tags" value="{{ old('tags') }}">
+								<input data-role="tagsinput" style="width:100%" type="text" class="form-control" name="tags" value="{{ old('tags', implode(', ', $photo->tags()->lists('title'))) }}">
 							</div>
 						</div>
 						
@@ -67,7 +86,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
-									Create
+									Update Photo
 								</button>
 							</div>
 						</div>

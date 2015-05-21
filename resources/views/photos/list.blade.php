@@ -35,7 +35,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">Random Photos</div>
+				<div class="panel-heading">{{ $heading or 'Photos' }}</div>
 
 				<div class="panel-body">
 					
@@ -70,7 +70,7 @@
 					
 					</div>
 					
-					
+					{!! $photos->render() !!}
 				</div>
 			</div>
 		</div>

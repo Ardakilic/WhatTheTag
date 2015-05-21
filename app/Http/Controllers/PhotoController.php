@@ -15,7 +15,8 @@ use Auth;
 class PhotoController extends Controller {
 	
 	//Only users can access this route
-	public function __construct() {
+	public function __construct()
+	{
 		$this->middleware('auth', ['except' => 'getIndex']);
 	}
 	
@@ -34,12 +35,39 @@ class PhotoController extends Controller {
 		return view('index')
 			->withPhotos($photos);
 	}
+	
+	public function getSearch(Request $request)
+	{
 
-	public function getNew() {
+		if(!$request->has('q')) {
+			return redirect('/')
+				->withErrors('You must make a search from the bar first');
+		}
+		
+		$parameters = e($request->get('q'));
+		
+		dd($parameters);
+	}
+	
+	public function getRecents()
+	{
+		$photos = Photo::with('tags')
+			->take(12)
+			->orderBy('id', 'desc')
+			->paginate(2);
+			
+		return view('photos.list')
+			->withHeading('Recent Photos')
+			->withPhotos($photos);
+	}
+
+	public function getNew()
+	{
 		return view('photos.new');
 	}
 	
-	public function postNew(Request $request) {
+	public function postNew(Request $request)
+	{
 		
 		$validation = Validator::make($request->all(), [
 			'title'		=> 'required|min:3',
@@ -77,7 +105,7 @@ class PhotoController extends Controller {
 				}
 			}
 		}
-		//Tag Stuff dnd
+		//Tag Stuff end
 		
 		$photo 			= new Photo;
 		$photo->user_id	= Auth::user()->id;

@@ -13,7 +13,8 @@ use Validator;
 class UserController extends Controller {
 	
 	//Only admins can access this controller
-	public function __construct() {
+	public function __construct()
+	{
 		$this->middleware('auth.admin');
 	}
 
@@ -27,24 +28,30 @@ class UserController extends Controller {
 		return view('admin.users.list');
 	}
 	
-	public function getGrid() {
+	public function getGrid()
+	{
 		
-		$users = User::select(['id', 'name', 'email', 'role', 'created_at', 'updated_at']);
+		$users = User::select([
+			'id', 'name', 'email',
+			'role', 'created_at', 'updated_at'
+		]);
 		
 		return Datatables::of($users)
-		->addColumn('action', function ($user) {
-			return '<a href="/admin/users/edit/'.$user->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="/admin/users/delete/'.$user->id.'" class="btn btn-xs btn-primary delete-button"><i class="glyphicon glyphicon-remove"></i> Delete</a>';
-		})
-		->make(true);
+			->addColumn('action', function ($user) {
+				return '<a href="/admin/users/edit/'.$user->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="/admin/users/delete/'.$user->id.'" class="btn btn-xs btn-primary delete-button"><i class="glyphicon glyphicon-remove"></i> Delete</a>';
+			})
+			->make(true);
 		
 		
 	}
 	
-	public function getNew() {
+	public function getNew()
+	{
 		return view('admin.users.new');
 	}
 	
-	public function postNew(Request $request) {
+	public function postNew(Request $request)
+	{
 		
 		$validation = Validator::make($request->all(), [
 			'name'					=> 'required|min:3|unique:users,name',
@@ -61,11 +68,11 @@ class UserController extends Controller {
 				->withErrors($validation);
 		}
 		
-		$user 			= New User;
-		$user->name		= $request->get('name');
-		$user->email	= $request->get('email');
-		$user->role		= $request->get('role');
-		$user->password	= Hash::make($request->get('password'));
+		$user 						= New User;
+		$user->name					= $request->get('name');
+		$user->email				= $request->get('email');
+		$user->role					= $request->get('role');
+		$user->password				= Hash::make($request->get('password'));
 		$user->save();
 		
 		return redirect()
@@ -75,7 +82,8 @@ class UserController extends Controller {
 	}
 	
 
-	public function getEdit($id) {
+	public function getEdit($id)
+	{
 		
 		$user = User::find($id);
 		
@@ -89,7 +97,8 @@ class UserController extends Controller {
 		
 	}
 	
-	public function postEdit($id, Request $request) {
+	public function postEdit($id, Request $request)
+	{
 		
 		$user = User::find($id);
 		
@@ -125,7 +134,8 @@ class UserController extends Controller {
 		
 	}
 	
-	public function getDelete($id) {
+	public function getDelete($id)
+	{
 		
 		$user = User::find($id);
 		
