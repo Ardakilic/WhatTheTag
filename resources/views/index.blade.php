@@ -5,28 +5,27 @@
 {{-- http://bootsnipp.com/snippets/featured/thumbnail-caption-hover-effect --}}
 <style type="text/css">
 .thumbnail {
-	position:relative;
-	overflow:hidden;
+	position: relative;
+	overflow: hidden;
 }
 
 .caption {
-	position:absolute;
-	top:0;
-	right:0;
-	background:rgba(66, 139, 202, 0.75);
-	width:100%;
-	height:100%;
-	padding:2%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: rgba(66, 139, 202, 0.75);
+	width: 100%;
+	height: 100%;
+	padding: 2%;
 	display: none;
-	text-align:center;
-	color:#fff !important;
-	z-index:2;
+	text-align: center;
+	color: #fff !important;
+	z-index: 2;
 }
 
 #myModal {
 	background: rgba(0, 0, 0, 0.75);
 }
-
 </style>
 @endsection
 
@@ -54,7 +53,7 @@
 											<h5>Tags:</h5>
 											<p class="tagsWrapper">
 											@foreach($photo->tags as $tag)
-												<a class="label label-info" rel="tooltip" href="#" title="Photos tagged with: {{ $tag->title }}">{{ $tag->title }}</a>
+												<a class="label label-info" rel="tooltip" href="/photo/tagged/{{ $tag->slug }}" title="Photos tagged with: {{ $tag->title }}">{{ $tag->title }}</a>
 											@endforeach
 											</p>
 										</p>

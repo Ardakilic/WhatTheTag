@@ -1,11 +1,10 @@
 <?php
 
 Route::get('/', 'PhotoController@getIndex');
+Route::get('home', 'HomeController@index');
 
 Route::get('recents', 'PhotoController@getRecents');
 Route::get('search', 'PhotoController@getSearch');
-
-Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	'photo'			=> 'PhotoController',

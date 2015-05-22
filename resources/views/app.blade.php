@@ -40,6 +40,8 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				
 				<ul class="nav navbar-nav">
+					
+					<li><a href="/recents">Recent Photos</a></li>
 				
 					@if(Auth::check())
 						<li><a href="{{ url('/photo/new') }}">New Photo</a></li>
