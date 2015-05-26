@@ -95,7 +95,7 @@
 					</div>
 					
 					<div class="col-md-4">
-						<a id="modalDownloadBtn" role="button" href="" class="btn btn-default" target="_blank">Download</a>
+						<a id="modalDownloadBtn" role="button" href="" class="btn btn-default" target="_blank" download>Download</a>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
