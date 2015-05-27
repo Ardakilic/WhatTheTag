@@ -7,13 +7,13 @@
 	<title>{{$title or 'WhatTheTag'}}</title>
 	
 	{{-- Bootstrap CDN --}}
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	{{-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" /> --}}
 
 	{{-- Fonts --}}
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	
 	{{-- WhatTheTag-specific --}}
-	<link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
+	<link rel="stylesheet" href="{{ asset('css/app.min.css') }}" type="text/css">
 	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -97,13 +97,15 @@
 
 <footer class="footer">
 <div class="container">
-<p class="text-muted">&copy; {{date('Y')}} WhatTheTag, <a href="https://github.com/ardakilic/whatthetag" target="_blank">Contribute on GitHub</a></p>
+<p class="text-muted">&copy; {{date('Y')}} WhatTheTag by <a href="https://twitter.com/ardadev">Arda Kılıçdağı</a>, <a href="https://github.com/ardakilic/whatthetag" target="_blank">Contribute on GitHub</a></p>
 </div>
 </footer>
 
+	<script src="{{ asset('js/app.min.js') }}"></script>
+	
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> --}}
+	{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script> --}}
 	
 @yield('footer_assets')
 </body>

@@ -1,7 +1,53 @@
 {
-  "private": true,
-  "devDependencies": {
-    "gulp": "^3.8.8",
-    "laravel-elixir": "*"
-  }
+	"name": "WhatTheTag",
+	"version": "1.0.0",
+	"description": "arda.pw",
+	"keywords": [ "arda", "ardakilic", "kilicdagi", "tag", "phototag", "laravel", "laravel-5" ],
+	"homepage": "http://arda.pw/",
+	"bugs": {
+		"url": "https://github.com/ardakilic/whatthetag/issues",
+		"email": "arda@kilicdagi.com"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/ardakilic/whatthetag/issues/blob/master/LICENSE"
+		}
+	],
+	"contributors": [
+		{
+			"name": "Arda Kilicdagi",
+			"email": "arda@kilicdagi.com",
+			"url": "http://arda.pw/"
+		}
+	],
+	"main": "eser-ozvataf-com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ardakilic/whatthetag.git"
+	},
+	
+	"devDependencies": {
+		"gulp": "^3.8.11",
+		"gulp-ruby-sass": "^1.0.5",
+		"gulp-concat": "^2.5.2",
+		"gulp-notify": "^2.2.0",
+		"del": "^1.1.1",
+		"gulp-uglify": "^1.2.0",
+		"run-sequence": "^1.1.0",
+		
+		"jquery": "^2.1.4",
+		"bootstrap": "^3.3.4",
+		"bootstrap-tagsinput": "^0.4.2",
+		"font-awesome": "^4.3.0",
+		"datatables": "^1.10.7",
+		"datatables-bootstrap3-plugin": "^0.4.0",
+		"social-share-js": "^1.0.3",
+		"bootstrap-social": "^4.8.0"
+		
+	},
+	
+	"engines": {
+		"node": "~0.10.1"
+	}
 }

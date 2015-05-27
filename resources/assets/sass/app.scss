@@ -1,0 +1,10 @@
+/*
+ Ruby Sass compiler in gulp cannot handle wildcards for now,
+ That's why we are using @import for the time being.
+ You can include other .scss files in the same/sub directory
+ Example for "other.scss" file in the same directory:
+ Just add: @import "other"
+*/
+@import 'footer';
+@import 'common';
+@import 'index';
