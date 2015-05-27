@@ -1,5 +1,5 @@
 /vendor
 /node_modules
 .env
-/temp_path
+/temp_dir
 /.sass-cache
