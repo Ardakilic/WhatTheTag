@@ -1,3 +1,37 @@
+/**
+ * For listing pages
+ */
+.list-thumbnail {
+	position: relative;
+	overflow: hidden;
+}
+
+.list-caption {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: rgba(66, 139, 202, 0.75);
+	width: 100%;
+	height: 100%;
+	padding: 2%;
+	display: none;
+	text-align: center;
+	color: #fff !important;
+	z-index: 2;
+}
+
+.list-caption a {
+	color: #fff;
+}
+
 #myModal {
 	background: rgba(0, 0, 0, 0.75);
+}
+
+
+/**
+ * For user-end forms etc. To fix their width
+ */
+.bootstrap-tagsinput {
+	width: 100% !important;
 }

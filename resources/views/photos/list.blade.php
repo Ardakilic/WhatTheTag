@@ -1,34 +1,5 @@
 @extends('app')
 
-@section('header_assets')
-{{-- View is totally based on this bootsnipp --}} 
-{{-- http://bootsnipp.com/snippets/featured/thumbnail-caption-hover-effect --}}
-<style type="text/css">
-.thumbnail {
-	position: relative;
-	overflow: hidden;
-}
-
-.caption {
-	position: absolute;
-	top: 0;
-	right: 0;
-	background: rgba(66, 139, 202, 0.75);
-	width: 100%;
-	height: 100%;
-	padding: 2%;
-	display: none;
-	text-align: center;
-	color: #fff !important;
-	z-index: 2;
-}
-
-#myModal {
-	background: rgba(0, 0, 0, 0.75);
-}
-</style>
-@endsection
-
 @section('content')
 <div class="container">
 	<div class="row">
@@ -45,10 +16,10 @@
 						@forelse($photos as $photo)
 						
 							<div class="col-md-3">
-								<div class="thumbnail">
-									<div class="caption">
-										<h4>{{ $photo->title }}</h4>
-										<p><a href="#" data-toggle="modal" data-target="#myModal" data-img-url="/uploads/{{ $photo->image }}" data-img-title="{{ $photo->title }}" class="label label-danger" rel="tooltip" title="Zoom">Zoom</a></p>
+								<div class="thumbnail list-thumbnail">
+									<div class="caption list-caption">
+										<h4><a rel="tooltip" data-placement="bottom" title="go to photo" href="/photo/detail/{{ $photo->slug }}">{{ $photo->title }}</a></h4>
+										<p><a href="#" data-link-type="list-modal" data-toggle="modal" data-target="#myModal" data-img-url="/uploads/{{ $photo->image }}" data-img-title="{{ $photo->title }}" class="label label-danger" rel="tooltip index-modal" title="Zoom">Zoom</a></p>
 										<p>
 											<h5>Tags:</h5>
 											<p class="tagsWrapper">
@@ -105,30 +76,4 @@
 </div>
 {{-- /Modal --}}
 
-@endsection
-
-@section('footer_assets')
-<script type="text/javascript">
-$("[rel='tooltip']").tooltip();
-
-$('.thumbnail').hover(
-	function(){
-		$(this).find('.caption').slideDown(250); //.fadeIn(250)
-	},
-	function(){
-		$(this).find('.caption').slideUp(250); //.fadeOut(205)
-	}
-); 
-
-{{-- Modal-related --}}
-$('a[data-toggle="modal"]').click(function() {
-	$('#myModal #myModalTitle').text($(this).attr('data-img-title'));
-	$('#myModal img').attr('src', $(this).attr('data-img-url'));
-	$('#myModal #modalDownloadBtn').attr('href', $(this).attr('data-img-url'));
-	{{-- fetch the tags from container and add it to left footer of modal --}}
-	$('#myModal #modalTagWrapper').html('<h4>' + $(this).closest('.caption').find('.tagsWrapper').html() + '<h4>');
-});
-{{-- /Modal-related --}}
-
-</script>
 @endsection

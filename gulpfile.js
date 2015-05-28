@@ -51,7 +51,7 @@ gulp.task('build-fonts', function() {
 		.pipe(gulp.dest(config.public.fontPath));
 });
 
-gulp.task('vendor-js', function(){
+gulp.task('vendor-js', function() {
 	return gulp.src(javaScripts)
 		.on('error', notify.onError(function (error) {
 				return 'Error: ' + error.message;
@@ -61,8 +61,8 @@ gulp.task('vendor-js', function(){
 		.pipe(gulp.dest(config.tempPath));
 });
 
-gulp.task('app-js', function(){
-	return gulp.src(config.jsPath + '/**.*')
+gulp.task('app-js', function() {
+	return gulp.src(config.jsPath + '/**/*.js')
 		.on('error', notify.onError(function (error) {
 				return 'Error: ' + error.message;
 			})
@@ -72,8 +72,8 @@ gulp.task('app-js', function(){
 		.pipe(gulp.dest(config.tempPath));
 });
 
-gulp.task('merge-scripts', function(){
-	return gulp.src([config.tempPath + '/vendor.min.js', config.tempPath + '/app-specific.min.js']) //To make sure they are set in order we give paths, not wildcards
+gulp.task('merge-scripts', function() {
+	return gulp.src([config.tempPath + '/vendor.min.js', config.tempPath + '/app-specific.min.js']) //To make sure they are set in order we give paths, so not wildcards
 		.pipe(concat('app.min.js'))
 		.on('error', notify.onError(function (error) {
 				return 'Error: ' + error.message;
@@ -82,7 +82,7 @@ gulp.task('merge-scripts', function(){
 		.pipe(gulp.dest(config.public.jsPath));
 });
 
-gulp.task('build-scripts', function(){
+gulp.task('build-scripts', function() {
 	return runSequence('vendor-js', 'app-js', 'merge-scripts');
 });
 
@@ -96,13 +96,13 @@ gulp.task('vendor-css', function(){
 		.pipe(gulp.dest(config.tempPath));
 });
 
-gulp.task('app-css', function(){
-	return sass(config.sassPath + '/app.scss', {
+gulp.task('app-css', function() {
+	return sass(config.sassPath + '/app.scss', { //We are including other sass files from this CSS
 			container	: config.tempPath,
 			style		: 'compressed',
 			stopOnError	: true
 		})
-		.on('error', notify.onError(function (error) {
+		.on('error', notify.onError(function(error) {
 				return 'Error: ' + error.message;
 			})
 		)
@@ -110,7 +110,7 @@ gulp.task('app-css', function(){
 		.pipe(gulp.dest(config.tempPath));
 });
 
-gulp.task('merge-css', function(){
+gulp.task('merge-css', function() {
 	return gulp.src([config.tempPath + '/vendor.min.css', config.tempPath + '/app-specific.min.css'])
 		.on('error', notify.onError(function(error) {
 				return 'Error: ' + error.message;
@@ -120,7 +120,7 @@ gulp.task('merge-css', function(){
 		.pipe(gulp.dest(config.public.cssPath));
 });
 
-gulp.task('build-css', function(){
+gulp.task('build-css', function() {
 	return runSequence('vendor-css', 'app-css', 'merge-css');
 });
 
@@ -138,6 +138,6 @@ gulp.task('clean', function(cb) {
 	);
 });
 
-gulp.task('default', function(){
+gulp.task('default', function() {
 	return runSequence(['clean', 'build-fonts', 'build-css', 'build-scripts']);
 });

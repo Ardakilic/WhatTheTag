@@ -16,10 +16,10 @@
 						@forelse($photos as $photo)
 						
 							<div class="col-md-3">
-								<div class="thumbnail index-thumbnail">
-									<div class="caption index-caption">
+								<div class="thumbnail list-thumbnail">
+									<div class="caption list-caption">
 										<h4><a rel="tooltip" data-placement="bottom" title="go to photo" href="/photo/detail/{{ $photo->slug }}">{{ $photo->title }}</a></h4>
-										<p><a href="#" data-link-type="index-modal" data-toggle="modal" data-target="#myModal" data-img-url="/uploads/{{ $photo->image }}" data-img-title="{{ $photo->title }}" class="label label-danger" rel="tooltip index-modal" title="Zoom">Zoom</a></p>
+										<p><a href="#" data-link-type="list-modal" data-toggle="modal" data-target="#myModal" data-img-url="/uploads/{{ $photo->image }}" data-img-title="{{ $photo->title }}" class="label label-danger" rel="tooltip index-modal" title="Zoom">Zoom</a></p>
 										<p>
 											<h5>Tags:</h5>
 											<p class="tagsWrapper">
@@ -62,7 +62,6 @@
 					<div class="col-md-8">
 						<span id="modalTagWrapper" class="pull-left"></span>
 					</div>
-					
 					<div class="col-md-4">
 						<a id="modalDownloadBtn" role="button" href="" class="btn btn-default" target="_blank" download>Download</a>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

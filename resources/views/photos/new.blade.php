@@ -1,15 +1,5 @@
 @extends('app')
 
-@section('header_assets')
-{{-- bootstrap-tagsinput version 0.5 --}}
-<link rel="stylesheet" href="//cdn.rawgit.com/timschlechter/bootstrap-tagsinput/28bfe3ece301e66e530e8b0e6fc5056cd34602e5/dist/bootstrap-tagsinput.css" />
-{{-- To fix the width --}}
-<style type="text/css">
-.bootstrap-tagsinput {
-	width: 100% !important;
-}
-</style>
-@stop
 
 @section('content')
 <div class="container-fluid">
@@ -77,37 +67,4 @@
 		</div>
 	</div>
 </div>
-@endsection
-
-@section('footer_assets')
-{{-- bootstrap-tagsinput --}}
-{{-- version 0.5, ignore the 4.2 in release name --}}
-{{-- https://github.com/timschlechter/bootstrap-tagsinput/blob/28bfe3ece301e66e530e8b0e6fc5056cd34602e5/dist/bootstrap-tagsinput.min.js --}}
-<script type="text/javascript" src="//cdn.rawgit.com/timschlechter/bootstrap-tagsinput/28bfe3ece301e66e530e8b0e6fc5056cd34602e5/dist/bootstrap-tagsinput.min.js"></script>
-{{-- /bootstrap-tagsinput --}}
-
-{{-- IMG Preview --}}
-{{-- Taken from http://stackoverflow.com/a/4459419/570763 --}}
-<script type="text/javascript">
-
-function readURL(input) {
-
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		
-		reader.onload = function (e) {
-			$('#previewGrp').removeClass('hide');
-			$('#previewImg').attr('src', e.target.result);
-		}
-		
-		reader.readAsDataURL(input.files[0]);
-	}
-
-}
-
-$('input[name="photo"]').change(function() {
-	readURL(this);
-});
-</script>
-{{-- /IMG Preview --}}
 @endsection

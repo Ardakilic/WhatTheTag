@@ -5,6 +5,6 @@
  Example for "other.scss" file in the same directory:
  Just add: @import "other"
 */
-@import 'footer';
 @import 'common';
-@import 'index';
+@import 'footer';
+@import 'photos/detail'

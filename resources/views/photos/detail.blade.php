@@ -1,11 +1,9 @@
 @extends('app')
 
 @section('header_assets')
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-{{-- Social buttons CSS --}}
-{{-- http://lipis.github.io/bootstrap-social/ --}}
-<link rel="stylesheet" href="//cdn.rawgit.com/lipis/bootstrap-social/a14ffc82e1599b5020ab149b916b008ddc75fb4a/bootstrap-social.css">
+<meta name="keywords" content="{{ implode(', ', $photo->tags()->lists('title')) }}">
+<meta name="description" content="{{ $photo->title }}">
 
 {{-- Opengraph metas --}}
 <meta property="og:title" content="{{ $photo->title }}" />
@@ -14,12 +12,6 @@
 <meta property="og:image" content="{{ url('/').Croppa::url('uploads/'. $photo->image, 600, 315) }}" />
 <meta property="og:type" content="website" />
 {{-- / Opengraph metas --}}
-
-<style type="text/css">
-.upper-margin {
-	margin-top: 20px;
-}
-</style>
 @endsection
 
 @section('content')
@@ -44,110 +36,74 @@
 						<div class="col-md-4">
 						
 	
-							<ul class="list-inline">
+							<ul class="list-inline" data-group="social-buttons">
 								<li>
-									<a href="" class="btn btn-social-icon btn-twitter ssk-twitter">
+									<a class="btn btn-social-icon btn-twitter twitter-share">
 										<i class="fa fa-twitter"></i>
 									</a>
 								</li>
 								
 								<li>
-									<a href="" class="btn btn-social-icon btn-facebook ssk-facebook">
+									<a class="btn btn-social-icon btn-facebook facebook-share">
 										<i class="fa fa-facebook"></i>
 									</a>
 								</li>
 								
 								<li>
-									<a class="btn btn-social-icon btn-google ssk-google-plus">
-										<i class="fa fa-google-plus"></i>
+									<a class="btn btn-social-icon btn-google-plus gplus-share">
+										<i class="fa fa-google"></i>
 									</a>
 								</li>
 								
 								<li>
-									<a class="btn btn-social-icon btn-linkedin ssk-linkedin">
+									<a class="btn btn-social-icon btn-linkedin linkedin-share">
 										<i class="fa fa-linkedin"></i>
 									</a>
 								</li>
 								
 								<li>
-									<a class="btn btn-social-icon btn-pinterest ssk-pinterest">
+									<a class="btn btn-social-icon btn-pinterest pinterest-share">
 										<i class="fa fa-pinterest"></i>
 									</a>
 								</li>
 								
-								<li>
-									<a class="btn btn-social-icon btn-tumblr ssk-tumblr">
-										<i class="fa fa-tumblr"></i>
-									</a>
-								</li>
 							</ul>
-						
-							<div class="form-group">
-								<label for="exampleInputEmail1">Image Link (email & IM)</label>
-								<input readonly value="{{ url('photo/detail/'.$photo->slug) }}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-							</div>
 							
-							<div class="form-group">
-								<label for="exampleInputEmail1">Direct Link (email & IM)</label>
-								<input readonly value="{{ url('/uploads/'.$photo->image) }}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-							</div>
+							<div data-group="share-buttons">
 							
-							<div class="form-group">
-								<label for="exampleInputEmail1">Markdown Link (Reddit Comments)</label>
-								<input readonly value="[whatthetag]({{ url('/uploads/'.$photo->image) }})" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-							</div>
-							
-							<div class="form-group">
-								<label for="exampleInputEmail1">HTML (website / blogs)</label>
-								<input readonly value="{{ '<a href="'. url('photo/detail/'.$photo->slug) .'"><img src="'. url('/uploads/'.$photo->image) .'" title="source: '. url('/') .'"></a>' }}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-							</div>
-							
-							<div class="form-group">
-								<label for="exampleInputEmail1">BBCode (message boards & forums)</label>
-								<input readonly value="[img]{{ url('/uploads/'.$photo->image) }}[/img]" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-							</div>
-							
-							<div class="form-group">
-								<label for="exampleInputEmail1">Linked BBCode (message boards)</label>
-								<input readonly value="[url={{ url('/photo/detail/'.$photo->slug) }}[img]{{ url('/uploads/'.$photo->image) }}[/img][/url]" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+								<div class="form-group">
+									<label for="exampleInputEmail1">Image Link (email & IM)</label>
+									<input readonly value="{{ url('photo/detail/'.$photo->slug) }}" type="text" class="form-control">
+								</div>
+								
+								<div class="form-group">
+									<label for="exampleInputEmail1">Direct Link (email & IM)</label>
+									<input readonly value="{{ url('/uploads/'.$photo->image) }}" type="text" class="form-control">
+								</div>
+								
+								<div class="form-group">
+									<label for="exampleInputEmail1">Markdown Link (Reddit Comments)</label>
+									<input readonly value="[whatthetag]({{ url('/uploads/'.$photo->image) }})" type="text" class="form-control">
+								</div>
+								
+								<div class="form-group">
+									<label for="exampleInputEmail1">HTML (website / blogs)</label>
+									<input readonly value="{{ '<a href="'. url('photo/detail/'.$photo->slug) .'"><img src="'. url('/uploads/'.$photo->image) .'" title="source: '. url('/') .'"></a>' }}" type="text" class="form-control">
+								</div>
+								
+								<div class="form-group">
+									<label for="exampleInputEmail1">BBCode (message boards & forums)</label>
+									<input readonly value="[img]{{ url('/uploads/'.$photo->image) }}[/img]" type="text" class="form-control">
+								</div>
+								
+								<div class="form-group">
+									<label for="exampleInputEmail1">Linked BBCode (message boards)</label>
+									<input readonly value="[url={{ url('/photo/detail/'.$photo->slug) }}[img]{{ url('/uploads/'.$photo->image) }}[/img][/url]" type="text" class="form-control">
+								</div>
 							</div>
 						
 						</div>
 						
-					</div>
-					
-					
-					<div class="row">
-					
-						
-						<ul class="element">
-<!--===== this block will become clickable (shows the twitter share dialogue on click) 
-because of the class 'twitter-share'====-->
-    <li>
-    
-    <div class="twitter-share">
-        <span>Share on twitter</span>
-        <span class="twitter-count"></span> <!--====shows twitter share count==-->
-    </div>
-    
-    </li>
-    
-    
-    <li>
-    
-    <div class="facebook-share">
-        <span>Share on fb</span>
-        <span class="facebook-count"></span> <!--====shows twitter share count==-->
-    </div>
-    
-    </li>
-    
-
-</ul>
-
-
-					
-					
 					</div>
 					
 				</div>
@@ -158,19 +114,11 @@ because of the class 'twitter-share'====-->
 @endsection
 
 @section('footer_assets')
-{{-- Social Sharing Kit, we are only using the JS --}}
-<script type="text/javascript" src="//cdn.rawgit.com/darklow/social-share-kit/v1.0.4/dist/js/social-share-kit.min.js"></script>
-<script type="text/javascript">
-SocialShareKit.init({
-	selector: '.btn-social-icon',
-	url: '{{ url('photo/detail/'.$photo->slug) }}',
-	text: '{{ $photo->title }} on {{ url('/') }}'
-});
-{{-- /Social Sharing Kit --}}
-
-
-$('input[type="text"]').click(function(){
-	$(this).focus().select();
+<script>
+$('ul[data-group="social-buttons"]').socialShare({
+	image			: '{{ asset('uploads/'.$photo->image) }}',
+	twitterVia		: 'ardadev', //TODO
+	twitterHashTags	: '{{ implode(', ', $photo->tags()->lists('title')) }}',
 });
 </script>
-@endsection
+@stop
