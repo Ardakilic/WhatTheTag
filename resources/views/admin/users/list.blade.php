@@ -1,10 +1,5 @@
 @extends('app')
 
-@section('header_assets')
-{{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" /> --}}
-<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" />
-@stop
-
 @section('content')
 <div class="container-fluid">
 	<div class="row">
@@ -21,7 +16,7 @@
 				
 					@include('partials.messages')
 					
-					<table id="users-table" class="table table-condensed">
+					<table id="admin-users-table" class="table table-condensed" data-source="{{ url('admin/users/grid') }}">
 						<thead>
 							<tr>
 								<th>Id</th>
@@ -40,30 +35,4 @@
 		</div>
 	</div>
 </div>
-@endsection
-
-@section('footer_assets')
-<script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-<script type="text/javascript">
-$.fn.dataTableExt.sErrMode = 'throw';
-$('#users-table').DataTable({
-	processing: true,
-	serverSide: true,
-	ajax: '{{ url('admin/users/grid') }}',
-	columns: [
-		{data: 'id', name: 'id'},
-		{data: 'name', name: 'name'},
-		{data: 'email', name: 'email'},
-		{data: 'role', name: 'role'},
-		{data: 'created_at', name: 'created_at'},
-		{data: 'updated_at', name: 'updated_at'},
-		{data: 'action', name: 'action', orderable: false, searchable: false}
-	]
-});
-
-$(document).on('click', '.delete-button', function(){
-	return confirm('Are you sure you want to delete this user?');
-});
-</script>
 @endsection

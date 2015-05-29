@@ -4,7 +4,8 @@ var gulp = require('gulp'),
 	del = require('del'),
 	uglify = require('gulp-uglify'),
 	runSequence = require('run-sequence'),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+	minifyCss = require('gulp-minify-css');
 
 var config = {
 	jsPath			: './resources/assets/js',
@@ -23,7 +24,8 @@ var cssFiles = [
 	'/bootstrap/dist/css/bootstrap.min.css',
 	'/datatables-bootstrap3-plugin/media/css/datatables-bootstrap3.min.css',
 	'/font-awesome/css/font-awesome.min.css',
-	'/bootstrap-social/bootstrap-social.css'
+	'/bootstrap-social/bootstrap-social.css',
+	'/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'
 ];
 cssFiles = cssFiles.map(function(el) { 
 	return config.nodePath + el; 
@@ -93,6 +95,7 @@ gulp.task('vendor-css', function(){
 			})
 		)
 		.pipe(concat('vendor.min.css'))
+		.pipe(minifyCss({compatibility: 'ie8'})) //because bootstrap-tagsinput css is not minified
 		.pipe(gulp.dest(config.tempPath));
 });
 

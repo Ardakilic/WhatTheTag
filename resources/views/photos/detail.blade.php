@@ -29,6 +29,16 @@
 							<img class="img-responsive" src="/uploads/{{ $photo->image }}">
 							
 							<div class="upper-margin">
+								<h4>
+									@forelse($photo->tags as $tag)
+										<a class="label label-info" rel="tooltip" href="/photo/tagged/{{ $tag->slug }}" data-original-title="Photos tagged with: {{ $tag->title }}">{{ $tag->title }}</a>
+									@empty
+										<p>No tags found for this photo</p>
+									@endforelse
+								</h4>
+							</div>
+							
+							<div class="upper-margin">
 								<a role="button" href="/uploads/{{ $photo->image }}" class="btn btn-default" target="_blank" download>Download</a>
 							</div>
 						</div>
@@ -114,9 +124,10 @@
 @endsection
 
 @section('footer_assets')
-<script>
+<script type="text/javascript">
 $('ul[data-group="social-buttons"]').socialShare({
 	image			: '{{ asset('uploads/'.$photo->image) }}',
+	counts			: false,
 	twitterVia		: 'ardadev', //TODO
 	twitterHashTags	: '{{ implode(', ', $photo->tags()->lists('title')) }}',
 });

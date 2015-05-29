@@ -1,20 +1,5 @@
 @extends('app')
 
-@section('header_assets')
-{{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" /> --}}
-<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" />
-<style type="text/css">
-#photos-table > tbody > tr > td {
-	vertical-align: middle;
-}
-
-#myModal {
-	background: rgba(0, 0, 0, 0.75);
-}
-
-</style>
-@stop
-
 @section('content')
 <div class="container-fluid">
 	<div class="row">
@@ -31,7 +16,7 @@
 				
 					@include('partials.messages')
 					
-					<table id="photos-table" class="table table-condensed">
+					<table id="admin-photos-table" class="table table-condensed" data-source="{{ url('admin/photos/grid') }}">
 						<thead>
 							<tr>
 								<th>Id</th>
@@ -80,53 +65,4 @@
 </div>
 {{-- /Modal --}}
 
-
-@endsection
-
-@section('footer_assets')
-<script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-<script type="text/javascript">
-
-function triggerTooltip() {
-	{{-- console.log('triggered!'); --}}
-	$('img[data-toggle="tooltip"]').tooltip();
-}
-
-$.fn.dataTableExt.sErrMode = 'throw';
-$('#photos-table')
-	.on('order.dt',	function () { triggerTooltip(); } )
-	.on('search.dt',function () { triggerTooltip(); } )
-	.on('page.dt',	function () { triggerTooltip(); } )
-	.DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: '{{ url('admin/photos/grid') }}',
-		columns: [
-			{data: 'id'},
-			{data: 'image', orderable: false, searchable: false},
-			{data: 'title'},
-			{data: 'name'},
-			{data: 'created_at'},
-			{data: 'updated_at'},
-			{data: 'action', name: 'action', orderable: false, searchable: false}
-		],
-		fnInitComplete: function() {
-			triggerTooltip();
-		}
-	});
-$(document).on('click', '.delete-button', function(){
-	return confirm('Are you sure you want to delete this photo?');
-});
-
-
-{{-- Modal-related --}}
-$(document).on('click', 'a[data-toggle="modal"]', function() {
-	$('#myModal #myModalTitle').text($(this).attr('data-img-title'));
-	$('#myModal img').attr('src', $(this).attr('data-img-url'));
-	$('#myModal #modalDownloadBtn').attr('href', $(this).attr('data-img-url'));
-});
-{{-- /Modal-related --}}
-
-</script>
 @endsection

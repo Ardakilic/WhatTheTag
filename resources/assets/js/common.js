@@ -29,8 +29,11 @@ $('a[data-link-type="list-modal"]').click(function() {
 
 
 /**
- * Forms related JavaScripts
+ * Forms and Lists related common JavaScripts
  */
+
+//Datatables should throw errors to the console instead of alert()
+$.fn.dataTableExt.sErrMode = 'throw';
 
 //For both front-end and backend forms
 //Taken from http://stackoverflow.com/a/4459419/570763
@@ -41,7 +44,7 @@ function readURL(input) {
 		reader.onload = function (e) {
 			$('#previewGrp').removeClass('hide');
 			$('#previewImg').attr('src', e.target.result);
-		}
+		};
 		
 		reader.readAsDataURL(input.files[0]);
 	}
@@ -50,4 +53,9 @@ function readURL(input) {
 //Note: maybe in future this may change
 $('input[name="photo"]').change(function() {
 	readURL(this);
+});
+
+//For delete confirmation
+$(document).on('click', '.delete-button', function(){
+	return confirm('Are you sure you want to delete this photo?');
 });

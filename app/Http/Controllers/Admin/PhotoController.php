@@ -42,7 +42,7 @@ class PhotoController extends Controller {
 			->addColumn('action', function ($photo) {
 				return '<a href="/admin/photos/edit/'.$photo->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="/admin/photos/delete/'.$photo->id.'" class="btn btn-xs btn-primary delete-button"><i class="glyphicon glyphicon-remove"></i> Delete</a>';
 			})
-			->editColumn('image', '<a href="#" data-toggle="modal" data-target="#myModal" data-img-url="/uploads/{{ $image }}" data-img-title="{{ $title }}"><img class="thumbnail" data-toggle="tooltip" rel="thumbnail" title="Click for bigger version" src="{{ Croppa::url("/uploads/$image", 150, 120) }}" /></a>')
+			->editColumn('image', '<a href="#" data-modal-type="admin-modal" data-toggle="modal" data-target="#myModal" data-img-url="/uploads/{{ $image }}" data-img-title="{{ $title }}"><img class="thumbnail" data-toggle="tooltip" rel="thumbnail" title="Click for bigger version" src="{{ Croppa::url("/uploads/$image", 150, 120) }}" /></a>')
 			->editColumn('name', '<a href="/admin/users/edit/{{ $user_id }}">{{ $name }}</a>')
 			->removeColumn('user_id')
 			->make(true);
