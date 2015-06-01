@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Photo;
 use App\Tag;
+use App\User;
 use DB;
 use Str;
 use Auth;
@@ -19,7 +20,7 @@ class PhotoController extends Controller {
 	{
 		$this->middleware('auth', ['only' => ['getNew', 'postNew']]);
 		//I wish we could pass parameters to middlewares
-		$this->middleware('validSlugFirstParameter', ['only' => ['getTagged', 'getDetail']]);
+		$this->middleware('validSlugFirstParameter', ['only' => ['getTagged', 'getDetail', 'getUser']]);
 	}
 	
 	/**
@@ -33,8 +34,8 @@ class PhotoController extends Controller {
 			->random()
 			->take(12)
 			->get();
-			
-		return view('index')
+		
+		return view('photos.list')
 			->withPhotos($photos);
 	}
 	
@@ -114,7 +115,7 @@ class PhotoController extends Controller {
 				});
 			})
 			->orderBy('id', 'desc')
-			->paginate(2);
+			->paginate(config('whatthetag.pagination_count'));
 			
 			return view('photos.list')
 				->withHeading('Search results for: '.implode(', ', $parameters))
@@ -127,7 +128,7 @@ class PhotoController extends Controller {
 		$photos = Photo::with('tags')
 			->take(12)
 			->orderBy('id', 'desc')
-			->paginate(2);
+			->paginate(config('whatthetag.pagination_count'));
 			
 		return view('photos.list')
 			->withHeading('Recent Photos')
@@ -152,7 +153,25 @@ class PhotoController extends Controller {
 
 		return view('photos.list')
 			->withHeading('Photos Tagged With: '.$tagSlug)
-			->withPhotos($tag->photos()->paginate(2));
+			->withPhotos($tag->photos()->paginate(config('whatthetag.pagination_count')));
+	}
+	
+	public function getUser($userSlug)
+	{
+		//Let's find the user first
+		//I don't like findBySlug() method 
+		$user = User::with('photos', 'photos.tags', 'photos.user')
+			->whereSlug($userSlug)->first();
+		
+		if(!$user) {
+			return redirect('/')
+				->withError('User not found');
+		}
+		
+		return view('photos.list')
+			->withHeading('All Photos of: '.$user->name)
+			->withPhotos($user->photos()->paginate(config('whatthetag.pagination_count')));
+
 	}
 	
 	public function getDetail($photoSlug) {

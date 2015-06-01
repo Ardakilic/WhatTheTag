@@ -39,8 +39,9 @@
 					
 					
 					</div>
-					
-					<div class="col-md-12 text-center">{!! $photos->render() !!}</div>
+					@if($photos instanceof \Illuminate\Pagination\LengthAwarePaginator || $photos instanceof Illuminate\Pagination\Paginator)
+						<div class="col-md-12 text-center">{!! $photos->render() !!}</div>
+					@endif
 				</div>
 			</div>
 		</div>

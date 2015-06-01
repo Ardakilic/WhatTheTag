@@ -2,7 +2,7 @@
 	"name": "WhatTheTag",
 	"version": "1.0.0",
 	"description": "arda.pw",
-	"keywords": [ "arda", "ardakilic", "kilicdagi", "tag", "phototag", "laravel", "laravel-5" ],
+	"keywords": [ "arda", "ardakilic", "kilicdagi", "tag", "photo", "phototag", "laravel", "laravel-5" ],
 	"homepage": "http://arda.pw/",
 	"bugs": {
 		"url": "https://github.com/ardakilic/whatthetag/issues",
@@ -21,7 +21,7 @@
 			"url": "http://arda.pw/"
 		}
 	],
-	"main": "eser-ozvataf-com",
+	"main": "arda-pw",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ardakilic/whatthetag.git"
