@@ -32,7 +32,7 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 * There are also pages such as "**user's uploaded photos**", "**all photos tagged with xx**".
 * You can **preview** the photos in a Bootstrap modal, and **download directly**.
 * There is also a **photo details page**. In this page there are **Disqus comments**, and **social buttons**.
-* In **administration panel**, while uploading / editing a photo, **you may also fetch the exif data of a photo directly and add them into the tags**. So let's say you've already tagged a photo before. If it's tagged normally, the system gets the tags and adds them into the tags list of the photo.
+* In **administration panel**, while uploading / editing a photo, **you may also fetch the EXIF data of a photo directly and add them into the tags**. So let's say you've already tagged a photo before. If it's tagged normally, the system gets the tags and adds them into the tags list of the photo.
 * You can also preview the photo before uploading.
 
 ##Requirements
@@ -65,7 +65,7 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 ![](http://i.imgur.com/jH6CfoP.png)
 
 
-You can check all the images at [this imgur album](http://imgur.com/a/pK047)
+You can check all the images at [this Imgur album](http://imgur.com/a/pK047).
 
 ##Installation
 
@@ -113,11 +113,11 @@ php artisan db:seed
 	* `comments_enabled` will enable or disable the comments section in the site. The value is boolean, so set it `false` to disable comments.
 	* `disqus_identifier` is your unique identifier in your Disqus panel. You can create a new identifier for your website by [following this link](https://disqus.com/admin/create/)
 
-* Make sure the `/public/uploads` folder is writable.
+* Make sure the `/public/uploads/` folder is writable.
 
 * Now, simply run the application. You can create a new virtualhost either from Apache, or Nginx etc.
 	
-	**Note:** PHP's own web server (e.g. if you're running it with ```php artisan serve```) will give 404 erros in administration panel, because datatables's links are quite long, and it gives 404 errors on very long links.
+	**Note:** PHP's own web server (e.g. if you're running it with `php artisan serve`) will give 404 erros in administration panel, because Datatables's AJAX links are quite long, and it gives 404 errors on very long links unless you edit this setting.
 	
 * Now you can login into your application.
 
@@ -137,14 +137,15 @@ This application covers:
 
 * Simple CRUD (Create, Read, Update, Delete) operations in Laravel 5.
 * Eloquent Relationships. You can see live examples of BelongsTo, HasMany, BelongsToMany relationships in this app.
-* All the contents are accessed using slugs. Managing slugs are handled with a 3rd party application.
-* Listing content dynamically using Datatables in Administration Panel with a 3rd party application.
+* All the contents are accessed using slugs. Managing slugs are handled with a 3rd party package.
+* Listing content dynamically using Datatables in Administration Panel with a 3rd party package.
+* Example usage of Masterpages for views.
 * Downloading popular assets (jQuery, Bootstrap, FontAwesome etc.) from npm repositories, compile and merge them with application's own assets.
-* Handling file uploads and processing.
-* Reading EXIF data from an image using PHP.
+* Handling file uploads and processing them.
+* Reading EXIF data from an uploaded image using PHP.
 * Has an authentication system, and role-based access middlewares.
 
 ##Thanks
 
-* [Koding](https://koding.com/R/arda), All of the project is written on the cloud on Koding servers directly from my browser. You must definitely try the service!
+* [Koding](https://koding.com/R/arda), all of the project is written on the cloud on Koding's servers directly from my browser. You must definitely try the service, also it's free!
 * [Burak Can](https://twitter.com/neoberg) and [Eser Özvataf](http://eser.ozvataf.com/) for their ideas especially while handling assets.

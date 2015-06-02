@@ -112,7 +112,7 @@
 								
 								<div class="form-group">
 									<label for="exampleInputEmail1">Markdown Link (Reddit Comments)</label>
-									<input readonly value="[whatthetag]({{ url('/uploads/'.$photo->image) }})" type="text" class="form-control">
+									<input readonly value="[{{ config('whatthetag.site_name') }}]({{ url('/uploads/'.$photo->image) }})" type="text" class="form-control">
 								</div>
 								
 								<div class="form-group">

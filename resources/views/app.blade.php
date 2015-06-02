@@ -7,9 +7,9 @@
 	<title>{{$title or config('whatthetag.site_name')}}</title>
 
 	{{-- Fonts --}}
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	
-	{{-- WhatTheTag-specific --}}
+	{{-- WhatTheTag-specific, compiled with gulp --}}
 	<link rel="stylesheet" href="{{ asset('css/app.min.css') }}" type="text/css">
 	
 	<meta name="generator" content="WhatTheTag 0.0.1" />
@@ -54,7 +54,7 @@
 						<form class="navbar-form navbar-left" role="search" action="/search">
 							<div class="input-group">
 								{{-- Double curly parantheses auto escape the provided string, so it's safe to use Request::get('q') below directly --}}
-								<input type="text" class="form-control" placeholder="Search photos, tags" name="q" value="{{ Request::get('q') }}">
+								<input type="text" class="form-control" placeholder="Search photos, tags" name="q" value="{{ Request::get('q', '') }}">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 								</div>
@@ -85,7 +85,6 @@
 						</li>
 					@endif
 					
-					
 				</ul>
 			</div>
 		</div>
@@ -96,9 +95,9 @@
 <p class="text-muted">&copy; {{date('Y')}} WhatTheTag by <a href="https://twitter.com/ardadev">Arda Kılıçdağı</a>, <a href="https://github.com/ardakilic/whatthetag" target="_blank">Contribute on GitHub</a></p>
 </div>
 </footer>
-
+{{-- WhatTheTag-specific, compiled with gulp --}}
 <script src="{{ asset('js/app.min.js') }}"></script>
-	
+
 @yield('footer_assets')
 </body>
 </html>
