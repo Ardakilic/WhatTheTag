@@ -55,6 +55,9 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 **Clicking to "zoom" on a list page**
 ![](https://i.imgur.com/nj7BBVL.png)
 
+**Photo detail page**
+![](https://i.imgur.com/i8Z0ut5.png)
+
 **Admin panel, user management**
 ![](https://i.imgur.com/2rpT5J3.png)
 
