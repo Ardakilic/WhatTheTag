@@ -128,8 +128,8 @@ gulp.task('build-css', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(config.appFiles.sass, ['build-css']);
-	gulp.watch(config.appFiles.js, ['build-js']);
+	gulp.watch(config.cssPath + '**/*.scss', ['build-css']);
+	gulp.watch(config.jsPath + '**/*.js', ['build-scripts']);
 });
 
 gulp.task('clean', function(cb) {

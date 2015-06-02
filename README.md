@@ -47,25 +47,25 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 ##Showcase
 
 **Main page**
-![](http://i.imgur.com/3wFQriO.png)
+![](https://i.imgur.com/3wFQriO.png)
 
 **Listing pages, also the hover effect**
-![](http://i.imgur.com/cm3QweK.png)
+![](https://i.imgur.com/cm3QweK.png)
 
 **Clicking to "zoom" on a list page**
-![](http://i.imgur.com/nj7BBVL.png)
+![](https://i.imgur.com/nj7BBVL.png)
 
 **Admin panel, user management**
-![](http://i.imgur.com/2rpT5J3.png)
+![](https://i.imgur.com/2rpT5J3.png)
 
 **Admin panel, photo management**
-![](http://i.imgur.com/PVRW54c.png)
+![](https://i.imgur.com/PVRW54c.png)
 
 **Admin panel, adding / Editing a photo**
-![](http://i.imgur.com/jH6CfoP.png)
+![](https://i.imgur.com/jH6CfoP.png)
 
 
-You can check all the images at [this Imgur album](http://imgur.com/a/pK047).
+You can check all the images at [this Imgur album](https://imgur.com/a/pK047).
 
 ##Installation
 
