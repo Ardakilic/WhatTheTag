@@ -72,8 +72,7 @@ You can check all the images at [this Imgur album](http://imgur.com/a/pK047).
 * First, clone the repository into your server
 
 ```shell
-https://github.com/Ardakilic/WhatTheTag.git
-
+git clone https://github.com/Ardakilic/WhatTheTag.git
 ```
 
 * Secondly, install dependencies
