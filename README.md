@@ -37,7 +37,7 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 
 ##Requirements
 
-* [Laravel 5.0's server requirements](http://laravel.com/docs/5.0/installation#server-requirements),
+* [Laravel 5.1's server requirements](http://laravel.com/docs/5.1/installation#installation),
 * [Composer](https://getcomposer.org) to install 3rd party dependencies,
 * [Ruby](https://www.ruby-lang.org/) Required for [gulp-ruby-sass](https://www.npmjs.com/package/gulp-ruby-sass),
 * [Sass >= 3.4](http://sass-lang.com/install) Required for [gulp-ruby-sass](https://www.npmjs.com/package/gulp-ruby-sass). You can check it by running `sass --version` from your terminal.
@@ -92,7 +92,7 @@ composer update
 npm update
 ```
 
-* Thirdly, compile and install assets
+*  (optional) Thirdly, compile and install assets (Repository holds pre-compiled assets inside)
 
 ```shell
 gulp clean
@@ -146,6 +146,23 @@ This application covers:
 * Handling file uploads and processing them.
 * Reading EXIF data from an uploaded image using PHP.
 * Has an authentication system, and role-based access middlewares.
+
+##TODOs
+
+* Dynamic searching (Search as you type)
+* (Better) Caching
+* Elasticsearch integration
+
+##Changelog
+
+####0.2.0
+
+* Application updated to Laravel 5.1
+* Assets updated
+
+####0.1.0
+
+* First Release
 
 ##Thanks
 
