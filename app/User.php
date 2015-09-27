@@ -1,20 +1,28 @@
-<?php namespace App;
+<?php
 
+namespace App;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+
 
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract, SluggableInterface {
+class User extends Model implements AuthenticatableContract,
+                                    AuthorizableContract,
+                                    CanResetPasswordContract,
+                                    SluggableInterface
+{
+    use Authenticatable, Authorizable, CanResetPassword;
+    
+    use SluggableTrait;
 
-	use Authenticatable, CanResetPassword;
-	
-	use SluggableTrait;
 
 	/**
 	 * The database table used by the model.
