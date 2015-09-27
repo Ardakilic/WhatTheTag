@@ -12,7 +12,7 @@
 	{{-- WhatTheTag-specific, compiled with gulp --}}
 	<link rel="stylesheet" href="{{ asset('css/app.min.css') }}" type="text/css">
 	
-	<meta name="generator" content="WhatTheTag 0.1.0" />
+	<meta name="generator" content="WhatTheTag 0.2.1" />
 	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,7 +92,7 @@
 @yield('content')
 <footer class="footer">
 <div class="container">
-<p class="text-muted">&copy; {{date('Y')}} WhatTheTag by <a href="https://twitter.com/ardadev">Arda Kılıçdağı</a>, <a href="https://github.com/ardakilic/whatthetag" target="_blank">Contribute on GitHub</a></p>
+<p class="text-muted">&copy; {{date('Y')}} WhatTheTag by <a href="https://arda.pw" target="_blank">Arda Kılıçdağı</a>, <a href="https://github.com/ardakilic/whatthetag" target="_blank">Contribute on GitHub</a></p>
 </div>
 </footer>
 {{-- WhatTheTag-specific, compiled with gulp --}}

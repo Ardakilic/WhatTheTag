@@ -15,8 +15,8 @@ Here's my latest project that came out using [Laravel 5](https://www.laravel.com
 
 There are some reasons behind this project.
 
-* Firstly, I needed this. I didn't like Picasa's web interface, and I wanted to make a simple website that I could search my photos (actually my "*internet meme folder*") efficiently.
-* I wanted to play with Laravel 5 and to make a sample application that uses various features of Laravel 5.
+* Firstly, I needed this. I didn't like Picasa's web interface, Lost tags of ~600 photos thanks to Picasa, and I wanted to make a simple website that I could search my photos (actually my "*internet meme folder*") efficiently.
+* I wanted to play with Laravel 5.x and to make a sample application that uses various features of Laravel 5.x.
 * I also wanted to play with some asset management tools such as [Gulp](http://gulpjs.com/).
 
 After deciding to make this app, it took maybe a week or so in my spare times to pull this application together.
@@ -37,12 +37,12 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 
 ##Requirements
 
-* [Laravel 5.1's server requirements](http://laravel.com/docs/5.1/installation#installation),
-* [Composer](https://getcomposer.org) to install 3rd party dependencies,
-* [Ruby](https://www.ruby-lang.org/) Required for [gulp-ruby-sass](https://www.npmjs.com/package/gulp-ruby-sass),
-* [Sass >= 3.4](http://sass-lang.com/install) Required for [gulp-ruby-sass](https://www.npmjs.com/package/gulp-ruby-sass). You can check it by running `sass --version` from your terminal.
-* [npm](https://www.npmjs.com/) to install frontend dependencies,
-* [gulp](http://gulpjs.com/) to compile assets.
+* [Laravel 5.1's server requirements](http://laravel.com/docs/5.1/installation#installation)
+* [Composer](https://getcomposer.org) to install 3rd party dependencies
+* [npm](https://www.npmjs.com/) to install frontend dependencies
+* [gulp](http://gulpjs.com/) to compile assets
+* ~~[Ruby](https://www.ruby-lang.org/) Required for [gulp-ruby-sass](https://www.npmjs.com/package/gulp-ruby-sass),~~
+* ~~[Sass >= 3.4](http://sass-lang.com/install) Required for [gulp-ruby-sass](https://www.npmjs.com/package/gulp-ruby-sass). You can check it by running `sass --version` from your terminal.~~
 
 ##Showcase
 
@@ -149,16 +149,21 @@ This application covers:
 
 ##TODOs
 
+* Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)
 * Dynamic searching (Search as you type)
-* (Better) Caching
+* Caching
 * Elasticsearch integration
 
 ##Changelog
 
+####0.2.1
+
+* Got Sass switched with Less, because there is almost no need for Sass, and it brings additional installations of Ruby and Sass to the server. This way it's lighter. Thanks to @eserozvataf
+
 ####0.2.0
 
 * Application updated to Laravel 5.1
-* Assets updated
+* Assets and Requirements updated
 
 ####0.1.0
 
@@ -166,5 +171,5 @@ This application covers:
 
 ##Thanks
 
-* [Koding](https://koding.com/R/arda), all of the project is written on the cloud on Koding's servers directly from my browser. You must definitely try the service, also it's free!
+* [Koding](https://koding.com/R/arda), all of the project is written on the cloud using Koding's service on their VMs and my machine directly from my browser. You must definitely try the service, also it's free!
 * [Burak Can](https://twitter.com/neoberg) and [Eser Özvataf](http://eser.ozvataf.com/) for their ideas especially while handling assets.
