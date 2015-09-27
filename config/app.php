@@ -148,9 +148,9 @@ return [
         /**
          * WthatTheTag 3rd party Service Providers
          */
-        'Bkwld\Croppa\ServiceProvider',
-        'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-        'yajra\Datatables\DatatablesServiceProvider',
+        \Bkwld\Croppa\ServiceProvider::class,
+        \Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        \yajra\Datatables\DatatablesServiceProvider::class,
 
     ],
 
@@ -203,8 +203,8 @@ return [
         
         
         //WthatTheTag
-        'Croppa'        => 'Bkwld\Croppa\Facade',
-        'Datatables'    => 'yajra\Datatables\Datatables',
+        'Croppa'        => \Bkwld\Croppa\Facade::class,
+        'Datatables'    => \yajra\Datatables\Datatables::class,
     ],
 
 ];
