@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "cviebrock/eloquent-sluggable": "dev-master",
         "bkwld/croppa": "~4.0",
-        "yajra/laravel-datatables-oracle": "~5.0"
+        "yajra/laravel-datatables-oracle": "~5.0",
+        "filp/whoops": " ~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

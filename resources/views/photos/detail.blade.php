@@ -2,7 +2,7 @@
 
 @section('header_assets')
 
-<meta name="keywords" content="{{ implode(', ', $photo->tags()->lists('title')) }}">
+<meta name="keywords" content="{{ implode(', ', $photo->tags()->lists('title')->all()) }}">
 <meta name="description" content="{{ $photo->title }}">
 
 {{-- Opengraph metas --}}
@@ -112,7 +112,7 @@
 								
 								<div class="form-group">
 									<label for="exampleInputEmail1">Markdown Link (Reddit Comments)</label>
-									<input readonly value="[{{ config('whatthetag.site_name') }}]({{ url('/uploads/'.$photo->image) }})" type="text" class="form-control">
+									<input readonly value="![{{ config('whatthetag.site_name') }}]({{ url('/uploads/'.$photo->image) }})" type="text" class="form-control">
 								</div>
 								
 								<div class="form-group">
@@ -153,7 +153,7 @@ $('ul[data-group="social-buttons"]').socialShare({
 	image			: '{{ asset('uploads/'.$photo->image) }}',
 	counts			: false,
 	twitterVia		: '{{ config('whatthetag.twitter_name') }}',
-	twitterHashTags	: '{{ implode(', ', $photo->tags()->lists('title')) }}',
+	twitterHashTags	: '{{ implode(', ', $photo->tags()->lists('title')->all()) }}',
 });
 
 var disqus_shortname = '{{ config('whatthetag.disqus_identifier') }}';
