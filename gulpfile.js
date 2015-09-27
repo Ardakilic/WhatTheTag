@@ -101,7 +101,7 @@ gulp.task('vendor-css', function(){
 
 gulp.task('app-css', function() {
 	return sass(config.sassPath + '/app.scss', { //We are including other sass files from this CSS
-			container	: config.tempPath,
+			//container	: config.tempPath, //Deprecated, is not needed anymore!
 			style		: 'compressed',
 			stopOnError	: true
 		})
