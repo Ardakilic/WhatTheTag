@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
-	sass = require('gulp-ruby-sass'),
+	less = require('gulp-less'),
 	notify = require('gulp-notify'),
 	del = require('del'),
+	minifyCSS = require('gulp-minify-css'),
 	uglify = require('gulp-uglify'),
 	runSequence = require('run-sequence'),
 	concat = require('gulp-concat'),
@@ -9,10 +10,9 @@ var gulp = require('gulp'),
 
 var config = {
 	jsPath			: './resources/assets/js',
-	sassPath		: './resources/assets/sass',
+	lessPath		: './resources/assets/less',
 	nodePath		: './node_modules',
 	tempPath		: './temp_dir',
-	sassCachePath	: './.sass-cache',
 	public: {
 		fontPath	: './public/fonts',
 		cssPath		: './public/css',
@@ -100,16 +100,25 @@ gulp.task('vendor-css', function(){
 });
 
 gulp.task('app-css', function() {
-	return sass(config.sassPath + '/app.scss', { //We are including other sass files from this CSS
-			//container	: config.tempPath, //Deprecated, is not needed anymore!
-			style		: 'compressed',
-			stopOnError	: true
-		})
+	return gulp.src(config.lessPath + '/**/*.less')
 		.on('error', notify.onError(function(error) {
 				return 'Error: ' + error.message;
 			})
 		)
+		.pipe(less({
+			strictMath: true,
+			compress: false,
+			yuicompress: false,
+			optimization: 0
+		}))
 		.pipe(concat('app-specific.min.css'))
+		.pipe(minifyCSS({
+			advanced: false,
+			compatibility: 'ie8',
+			keepSpecialComments: 0,
+			processImport: false,
+			shorthandCompacting: true
+		}))
 		.pipe(gulp.dest(config.tempPath));
 });
 
@@ -128,15 +137,14 @@ gulp.task('build-css', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(config.cssPath + '**/*.scss', ['build-css']);
-	gulp.watch(config.jsPath + '**/*.js', ['build-scripts']);
+	gulp.watch(config.lessPath + '/**/*.less', ['build-css']);
+	gulp.watch(config.jsPath + '/**/*.js', ['build-scripts']);
 });
 
 gulp.task('clean', function(cb) {
 	del([
-		config.public.cssPath + '/*', config.public.jsPath + '/*', 
-		config.public.fontPath + '/*', config.tempPath + '/', 
-		config.sassCachePath + '/'
+		config.public.cssPath + '/*', config.public.jsPath + '/*',
+		config.public.fontPath + '/*', config.tempPath + '/'
 		], cb
 	);
 });
