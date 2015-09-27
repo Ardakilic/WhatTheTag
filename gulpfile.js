@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	less = require('gulp-less'),
 	notify = require('gulp-notify'),
 	del = require('del'),
+	minifyCSS = require('gulp-minify-css'),
 	uglify = require('gulp-uglify'),
 	runSequence = require('run-sequence'),
 	concat = require('gulp-concat'),
@@ -111,6 +112,13 @@ gulp.task('app-css', function() {
 			optimization: 0
 		}))
 		.pipe(concat('app-specific.min.css'))
+		.pipe(minifyCSS({
+			advanced: false,
+			compatibility: 'ie8',
+			keepSpecialComments: 0,
+			processImport: false,
+			shorthandCompacting: true
+		}))
 		.pipe(gulp.dest(config.tempPath));
 });
 
