@@ -5,8 +5,7 @@ var gulp = require('gulp'),
 	minifyCSS = require('gulp-minify-css'),
 	uglify = require('gulp-uglify'),
 	runSequence = require('run-sequence'),
-	concat = require('gulp-concat'),
-	minifyCss = require('gulp-minify-css');
+	concat = require('gulp-concat');
 
 var config = {
 	jsPath			: './resources/assets/js',
@@ -95,7 +94,7 @@ gulp.task('vendor-css', function(){
 			})
 		)
 		.pipe(concat('vendor.min.css'))
-		.pipe(minifyCss({compatibility: 'ie8'})) //because bootstrap-tagsinput css is not minified
+		.pipe(minifyCSS({compatibility: 'ie8'})) //because bootstrap-tagsinput css is not minified
 		.pipe(gulp.dest(config.tempPath));
 });
 
