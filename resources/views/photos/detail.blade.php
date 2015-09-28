@@ -79,7 +79,7 @@
 								</li>
 								
 								<li>
-									<a class="btn btn-social-icon btn-google-plus gplus-share">
+									<a class="btn btn-social-icon btn-google gplus-share">
 										<i class="fa fa-google"></i>
 									</a>
 								</li>
