@@ -42,16 +42,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        
+
         //Whoops integrated
         //Thanks to : http://ryanwinchester.ca/post/whoops-in-laravel-5-1
         if (config('app.debug')) {
             return $this->renderExceptionWithWhoops($request, $e);
         }
         
+        //Laravel automatically finds the 404 view, these lines are not needed either
+        /* else {
+            return response()->view('errors.404', [], 404);
+        }*/
+        
+        //I want everything to be handled with whoops. So I'm commenting out these
+        /*
         if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
+        */
 
         return parent::render($request, $e);
     }

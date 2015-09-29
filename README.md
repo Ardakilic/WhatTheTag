@@ -149,12 +149,18 @@ This application covers:
 
 ##TODOs
 
-* Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)
 * Dynamic searching (Search as you type)
 * Caching
 * Elasticsearch integration
+* ~~Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)~~
 
 ##Changelog
+
+####0.2.2
+
+* [Dropify](http://jeremyfagis.github.io/dropify/) integrated to upload forms. **You can now drag & drop the images!**
+* Custom 404 page added for the situations when debug is closed.
+* Tabs are switched with four spaces in (hopefully every part of the) project.
 
 ####0.2.1
 
