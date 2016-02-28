@@ -205,8 +205,7 @@ class PhotoController extends Controller {
         ]);
         
         if($validation->fails()) {
-            return redirect()
-                ->back()
+            return back()
                 ->withInput()
                 ->withErrors($validation);
         }
@@ -237,7 +236,7 @@ class PhotoController extends Controller {
         //Tag Stuff end
         
         $photo            = new Photo;
-        $photo->user_id    = Auth::user()->id;
+        $photo->user_id    = Auth::id();
         $photo->title    = $request->get('title');
         $photo->image    = $upload['filename'];
         $photo->save();
@@ -245,8 +244,7 @@ class PhotoController extends Controller {
         //Now attach the tags, since this is creating method, attach() is okay
         $photo->tags()->attach($tagIds);
         
-        return redirect()
-            ->back()
+        return back()
             ->withSuccess('Photo Created Successfully!');
         
     }

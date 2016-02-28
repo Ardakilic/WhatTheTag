@@ -150,7 +150,7 @@ return [
          */
         \Bkwld\Croppa\ServiceProvider::class,
         \Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
-        \yajra\Datatables\DatatablesServiceProvider::class,
+        \Yajra\Datatables\DatatablesServiceProvider::class,
 
     ],
 
@@ -204,7 +204,6 @@ return [
         
         //WthatTheTag
         'Croppa'        => \Bkwld\Croppa\Facade::class,
-        'Datatables'    => \yajra\Datatables\Datatables::class,
     ],
 
 ];

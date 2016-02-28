@@ -59,8 +59,7 @@ class PhotoController extends Controller {
         $photo = Photo::with('user', 'tags')->find($id);
 
         if(!$photo) {
-            return redirect()
-                ->back()
+            return back()
                 ->withError('Photo not found.');
         }
 
@@ -80,8 +79,7 @@ class PhotoController extends Controller {
         $photo = Photo::with('tags')->find($id);
 
         if(!$photo) {
-            return redirect()
-                ->back()
+            return back()
                 ->withError('Photo not found.');
         }
 
@@ -93,8 +91,7 @@ class PhotoController extends Controller {
         ]);
 
         if($validation->fails()) {
-            return redirect()
-                ->back()
+            return back()
                 ->withInput()
                 ->withErrors($validation);
         }
@@ -143,8 +140,7 @@ class PhotoController extends Controller {
         //Now, sync all the associated tags
         $photo->tags()->sync($tagIds);
 
-        return redirect()
-            ->back()
+        return back()
             ->withSuccess('Photo updated successfully!');
 
     }
@@ -154,8 +150,7 @@ class PhotoController extends Controller {
         $photo = Photo::find($id);
 
         if(!$photo) {
-            return redirect()
-                ->back()
+            return back()
                 ->withError('Photo not found');
         }
 
@@ -169,8 +164,7 @@ class PhotoController extends Controller {
 
         $photo->delete();
 
-        return redirect()
-            ->back()
+        return back()
             ->withSuccess('Photo deleted successfully!');
 
     }

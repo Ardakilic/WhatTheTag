@@ -64,8 +64,7 @@ class UserController extends Controller {
         ]);
 
         if($validation->fails()) {
-            return redirect()
-                ->back()
+            return back()
                 ->withInput()
                 ->withErrors($validation);
         }
@@ -77,8 +76,7 @@ class UserController extends Controller {
         $user->password                = Hash::make($request->get('password'));
         $user->save();
         
-        return redirect()
-            ->back()
+        return back()
             ->withSuccess('User created successfully!');
 
     }
@@ -117,8 +115,7 @@ class UserController extends Controller {
         ]);
 
         if($validation->fails()) {
-            return redirect()
-                ->back()
+            return back()
                 ->withInput()
                 ->withErrors($validation);
         }
@@ -130,8 +127,7 @@ class UserController extends Controller {
         }
         $user->save();
 
-        return redirect()
-            ->back()
+        return back()
             ->withSuccess('User updated successfully!');
 
     }
@@ -148,15 +144,13 @@ class UserController extends Controller {
         }
 
         if($user->role == 'admin') {
-            return redirect()
-                ->back()
+            return back()
                 ->withError('You cannot delete an administrator, first you must change the account level as user');
         }
 
         $user->delete();
 
-        return redirect()
-            ->back()
+        return back()
             ->withSuccess('User deleted successfully!');
     }
 
