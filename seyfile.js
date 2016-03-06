@@ -1,17 +1,8 @@
 'use strict';
 
-
 //WhatTheTag-specific configurations
-let less = require('gulp-less'),
-    notify = require('gulp-notify'),
-    del = require('del'),
-    minifyCSS = require('gulp-minify-css'),
-    uglify = require('gulp-uglify'),
-    runSequence = require('run-sequence'),
-    concat = require('gulp-concat');
-
 let wtt = {
-    jsPath            : './resources/assets/js',
+    jsPath          : './resources/assets/js',
     lessPath        : './resources/assets/less',
     nodePath        : './node_modules',
     tempPath        : './temp_dir',
@@ -89,9 +80,10 @@ config.bundle('main')
             beforeBuild: wtt.tempPath
         }
     })
-    .src(wtt.JavaScripts)
+    .src(javaScripts)
+    .concat('vendor.min.js')
     .jsoptimize()
-    .dest(wtt.tempPath + 'vendor.min.js')
+    .dest(wtt.tempPath)
     .exec();
 
 //app-specific.min.js
@@ -102,11 +94,12 @@ config.bundle('main')
         }
     })*/
     .src([
-        wtt.lessPath + '/**/*.less',
         wtt.lessPath + '/**/*.js'
     ])
+    .less()
+    .concat('app-specific.min.js')
+    .dest(wtt.tempPath)
     .jsoptimize()
-    .dest(wtt.tempPath + 'app-specific.min.js')
     .exec();
 
 //app.min.js
@@ -136,7 +129,6 @@ config.bundle('main')
         }
     })
     .src(cssFiles.concat(wtt.lessPath + '/**/*.less'))
-    .less()
     .cssminify()
     .concat('app.min.css')
     .dest(wtt.public.cssPath)
