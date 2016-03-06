@@ -1,5 +1,17 @@
 /vendor
+/public/storage
 /node_modules
 .env
 /temp_dir
-/.sass-cache
+/.sey
+/.idea
+**/.DS_Store
+# Windows image file caches
+**/Thumbs.db
+**/ehthumbs.db
+
+# Folder config file
+**/Desktop.ini
+
+# Recycle Bin used on file shares
+**/$RECYCLE.BIN/

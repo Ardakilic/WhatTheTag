@@ -95,11 +95,11 @@ npm update
 *  (optional) Thirdly, compile and install assets (Repository holds pre-compiled assets inside)
 
 ```shell
-gulp clean
-gulp
+npm install -g sey
+sey build
 ```
 
-* Now, create an `.env` file and fill your database credentials. You can copy it from `.env.example` file as a template.
+* Now, (if not created already,) create an `.env` file and fill your database credentials. You can copy it from `.env.example` file as a template.
 
 * Now, install the database schema from migration, and seed the users table for the administrator user:
 
@@ -155,6 +155,11 @@ This application covers:
 * ~~Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)~~
 
 ##Changelog
+
+####0.3.0
+
+* Got Gulp Switched with [sey](https://github.com/eserozvataf/sey), made by [Eser Özvataf](http://eser.ozvataf.com/). This way, assets building will be easier.
+* Minor code optimisation
 
 ####0.2.2
 

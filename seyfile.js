@@ -93,7 +93,7 @@ config.bundle('main')
         }
     })*/
     .src([
-        wtt.lessPath + '**/*.js'
+        wtt.jsPath + '**/*.js'
     ])
     .jsoptimize()
     .concat('app-specific.min.js')
@@ -118,8 +118,6 @@ config.bundle('main')
 
 
 //Build CSS Files
-
-//vendor.css
 config.bundle('main')
     .set({
         clean: {
