@@ -159,7 +159,8 @@ This application covers:
 ####0.3.0
 
 * Got Gulp Switched with [sey](https://github.com/eserozvataf/sey), made by [Eser Özvataf](http://eser.ozvataf.com/). This way, assets building will be easier.
-* Minor code optimisation
+* All dependencies' versions updated.
+* Minor code optimisations
 
 ####0.2.2
 

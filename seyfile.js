@@ -95,7 +95,8 @@ config.bundle('main')
     .src([
         wtt.jsPath + '**/*.js'
     ])
-    .jsoptimize()
+    .optimize()
+    .minify()
     .concat('app-specific.min.js')
     .dest(wtt.tempPath)
     .exec();
@@ -104,7 +105,7 @@ config.bundle('main')
 config.bundle('main')
     .set({
         clean: {
-            beforeBuild: wtt.public.jsPath
+            before: wtt.public.cssPath
         }
     })
     .src([
@@ -121,11 +122,14 @@ config.bundle('main')
 config.bundle('main')
     .set({
         clean: {
-            beforeBuild: wtt.public.cssPath
+            before: wtt.public.jsPath
         }
     })
-    .src(cssFiles.concat(wtt.lessPath + '**/*.less'))
-    .cssminify()
+    //.src(cssFiles.concat(wtt.lessPath + '**/*.less'))
+    .src(cssFiles)
+    .src(wtt.lessPath + '**/*.less')
+    .transpile()
+    .minify()
     .concat('app.min.css')
     .dest(wtt.public.cssPath)
     .exec();

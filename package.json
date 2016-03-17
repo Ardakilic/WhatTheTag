@@ -1,43 +1,35 @@
 {
-	"name": "WhatTheTag",
-	"version": "0.2.1",
-	"description": "WhatTheTag, photo tagging application",
-	"keywords": [ "arda", "ardakilic", "kilicdagi", "tag", "photo", "phototag", "laravel", "laravel-5" ],
-	"homepage": "https://arda.pw/",
-	"bugs": {
-		"url": "https://github.com/ardakilic/whatthetag/issues",
-		"email": "arda@kilicdagi.com"
-	},
-	"contributors": [
-		{
-			"name": "Arda Kilicdagi",
-			"email": "arda@kilicdagi.com",
-			"url": "http://arda.pw/"
-		}
-	],
-	"main": "arda-pw",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ardakilic/whatthetag.git"
-	},
-	
-	"devDependencies": {
-		"del": "^2.2.0",
-		"run-sequence": "^1.1.5",
-		
-		"jquery": "^2.2.1",
-		"bootstrap": "^3.3.6",
-		"bootstrap-tagsinput": "^0.7.1",
-		"font-awesome": "^4.5.0",
-		"datatables": "^1.10.11",
-		"datatables-bootstrap3-plugin": "^0.4.0",
-		"social-share-js": "^1.0.4",
-		"bootstrap-social": "^4.11.0",
-		"dropify": "^0.2.0"
-		
-	},
-	
-	"engines": {
-		"node": "~0.10.1"
-	}
+  "name": "WhatTheTag",
+  "version": "0.3.0",
+  "description": "WhatTheTag, photo tagging application",
+  "keywords": [ "arda", "ardakilic", "kilicdagi", "tag", "photo", "phototag", "laravel", "laravel-5" ],
+  "homepage": "https://arda.pw/",
+  "bugs": {
+    "url": "https://github.com/ardakilic/whatthetag/issues",
+    "email": "arda@kilicdagi.com"
+  },
+  "contributors": [
+    {
+      "name": "Arda Kilicdagi",
+      "email": "arda@kilicdagi.com",
+      "url": "http://arda.pw/"
+    }
+  ],
+  "main": "arda-pw",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ardakilic/whatthetag.git"
+  },
+  
+  "devDependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6",
+    "bootstrap-tagsinput": "^0.7.1",
+    "font-awesome": "^4.5.0",
+    "datatables": "^1.10.11",
+    "datatables-bootstrap3-plugin": "^0.4.0",
+    "social-share-js": "^1.0.4",
+    "bootstrap-social": "^4.11.0",
+    "dropify": "^0.2.0"
+  }
 }
