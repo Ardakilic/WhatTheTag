@@ -8,8 +8,8 @@ let wtt = {
     tempPath        : './temp_dir/',
     public: {
         fontPath    : './public/fonts/',
-        cssPath        : './public/css/',
-        jsPath        : './public/js/' 
+        cssPath     : './public/css/',
+        jsPath      : './public/js/'
     }
 };
 
@@ -21,8 +21,8 @@ let cssFiles = [
     'bootstrap-tagsinput/dist/bootstrap-tagsinput.css',
     'dropify/dist/css/dropify.min.css'
 ];
-cssFiles = cssFiles.map(function(el) { 
-    return wtt.nodePath + el; 
+cssFiles = cssFiles.map(function(el) {
+    return wtt.nodePath + el;
 });
 
 let javaScripts = [
@@ -35,8 +35,8 @@ let javaScripts = [
     'dropify/dist/js/dropify.min.js'
 ];
 
-javaScripts = javaScripts.map(function(el) { 
-    return wtt.nodePath + el; 
+javaScripts = javaScripts.map(function(el) {
+    return wtt.nodePath + el;
 });
 //WhatTheTag-specific configurations END
 
@@ -63,7 +63,7 @@ config.bundle('main')
         }
     })
     .src([
-        wtt.nodePath + 'font-awesome/fonts/**.*', 
+        wtt.nodePath + 'font-awesome/fonts/**.*',
         wtt.nodePath + 'bootstrap/fonts/**.*',
         wtt.nodePath + 'dropify/dist/fonts/**.*'
     ])
