@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -15,12 +16,12 @@ use Cviebrock\EloquentSluggable\SluggableTrait;
 
 
 class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract,
-                                    SluggableInterface
+    AuthorizableContract,
+    CanResetPasswordContract,
+    SluggableInterface
 {
     use Authenticatable, Authorizable, CanResetPassword;
-    
+
     use SluggableTrait;
 
 
@@ -44,13 +45,14 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
-    
+
     protected $sluggable = array(
-        'build_from'    => 'name',
-        'save_to'        => 'slug',
+        'build_from' => 'name',
+        'save_to' => 'slug',
     );
-    
-    public function photos() {
+
+    public function photos()
+    {
         return $this->hasMany('App\Photo');
     }
 

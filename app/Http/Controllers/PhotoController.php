@@ -31,7 +31,7 @@ class PhotoController extends Controller {
     public function getIndex()
     {
         $photos = Photo::with('tags')
-            ->random()
+            ->orderByRandom()
             ->take(12)
             ->get();
         
