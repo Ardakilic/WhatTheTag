@@ -30,7 +30,6 @@
     "datatables-bootstrap3-plugin": "^0.4.0",
     "social-share-js": "^1.0.4",
     "bootstrap-social": "^4.11.0",
-    "dropify": "^0.2.0",
-    "algoliasearch": "^3.13.1"
+    "dropify": "^0.2.0"
   }
 }
