@@ -152,6 +152,7 @@ This application covers:
 * Dynamic searching (Search as you type)
 * Caching
 * Elasticsearch integration
+* Google Vision API integration
 * ~~Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)~~
 
 ##Changelog
@@ -160,7 +161,9 @@ This application covers:
 
 * Got Gulp Switched with [sey](https://github.com/eserozvataf/sey), made by [Eser Özvataf](http://eser.ozvataf.com/). This way, assets building will be easier.
 * All dependencies' versions updated.
-* Minor code optimisations
+* Minor code optimisations.
+* All configuration values are now fetched from environment vars. Check `.env.example` file and find all variables prefixed with `WTT_`.
+* A new trait added for random methods, so it will run out of the box also with Postgres etc.
 
 ####0.2.2
 

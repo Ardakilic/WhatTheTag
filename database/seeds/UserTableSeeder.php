@@ -6,19 +6,20 @@ use App\User;
 use DB;
 use Hash;
 
-class UserTableSeeder extends Seeder {
+class UserTableSeeder extends Seeder
+{
 
-	public function run()
-	{
-		
-		DB::table('users')->delete();
+    public function run()
+    {
 
-		User::create([
-			'name'		=> 'admin',
-			'email' 	=> 'admin@whatthetag.com',
-			'password'	=> Hash::make('whatthetag'),
-			'role'		=> 'admin',
-		]);
-	}
+        DB::table('users')->delete();
+
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@whatthetag.com',
+            'password' => Hash::make('whatthetag'),
+            'role' => 'admin',
+        ]);
+    }
 
 }

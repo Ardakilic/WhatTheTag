@@ -2,21 +2,22 @@
 
 use Closure;
 
-class CheckSlugFirstParameterMiddleware {
+class CheckSlugFirstParameterMiddleware
+{
 
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        
+
         $firstParam = $request->route()->parameters()['one'];
 
-        if(!preg_match("/^[0-9A-z-_]+$/", $firstParam)) {
+        if (!preg_match("/^[0-9A-z-_]+$/", $firstParam)) {
             return response('Wrong input', 403);
         }
 
