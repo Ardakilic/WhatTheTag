@@ -10,9 +10,9 @@
     <link href='//fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     
     {{-- WhatTheTag-specific, compiled with gulp --}}
-    <link rel="stylesheet" href="{{ asset('css/app.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="/css/app.min.css" type="text/css">
     
-    <meta name="generator" content="WhatTheTag 0.2.1" />
+    <meta name="generator" content="WhatTheTag 0.3.0" />
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,7 +94,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 pull-left text-left">
-                <p class="text-muted">&copy; {{date('Y')}} WhatTheTag by <a href="https://arda.pw" target="_blank">Arda Kılıçdağı</a>, </p>
+                <p class="text-muted">&copy; 2015-{{date('Y')}} WhatTheTag by <a href="https://arda.pw" target="_blank">Arda Kılıçdağı</a>, </p>
             </div>
             <div class="col-md-6 pull-right text-right">
                 <p class="text-muted"><a href="https://github.com/ardakilic/whatthetag" target="_blank">Contribute on <i class="fa fa-github fa-2x"></i></a></p>
@@ -105,7 +105,7 @@
     </div>
 </footer>
 {{-- WhatTheTag-specific, compiled with gulp --}}
-<script src="{{ asset('js/app.min.js') }}"></script>
+<script src="/js/app.min.js"></script>
 
 @yield('footer_assets')
 </body>
