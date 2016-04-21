@@ -32,9 +32,9 @@ class PhotoController extends Controller
     {
         $photos = Photo::leftJoin('users', 'users.id', '=', 'photos.user_id')
             ->select([
-                'photos.id', 'photos.image as image', 'photos.title as title',
-                'users.name', 'users.id as user_id', 'photos.created_at',
-                'photos.updated_at'
+                'photos.id as id', 'photos.image as image', 'photos.title as title',
+                'users.name', 'users.id as user_id', 'photos.created_at as created_at',
+                'photos.updated_at as updated_at'
             ]);
 
         return Datatables::of($photos)

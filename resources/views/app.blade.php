@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{$title or config('whatthetag.site_name')}}</title>
+    <title>{{$title or config('whatthetag.site_name', 'WhatTheTag')}}</title>
 
     {{-- Fonts --}}
     <link href='//fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     
-    {{-- WhatTheTag-specific, compiled with gulp --}}
+    {{-- WhatTheTag-specific, compiled with sey --}}
     <link rel="stylesheet" href="/css/app.min.css" type="text/css">
     
     <meta name="generator" content="WhatTheTag 0.3.0" />
@@ -17,7 +17,7 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}">{{ config('whatthetag.site_name') }}</a>
+                <a class="navbar-brand" href="{{ url('/') }}">{{ config('whatthetag.site_name', 'WhatTheTag') }}</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -94,17 +94,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 pull-left text-left">
-                <p class="text-muted">&copy; 2015-{{date('Y')}} WhatTheTag by <a href="https://arda.pw" target="_blank">Arda Kılıçdağı</a>, </p>
+                <p class="text-muted">&copy; 2015-{{date('Y')}} WhatTheTag by <a href="https://arda.kilicdagi.com" target="_blank">Arda Kılıçdağı</a>, </p>
             </div>
             <div class="col-md-6 pull-right text-right">
-                <p class="text-muted"><a href="https://github.com/ardakilic/whatthetag" target="_blank">Contribute on <i class="fa fa-github fa-2x"></i></a></p>
+                <p class="text-muted"><a href="https://github.com/ardakilic/whatthetag" target="_blank">Get the source on <i class="fa fa-github fa-2x"></i></a></p>
             </div>
         </div>
     </div>
     
     </div>
 </footer>
-{{-- WhatTheTag-specific, compiled with gulp --}}
+{{-- WhatTheTag-specific, compiled with sey --}}
 <script src="/js/app.min.js"></script>
 
 @yield('footer_assets')

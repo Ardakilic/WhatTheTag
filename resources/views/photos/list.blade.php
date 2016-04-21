@@ -40,7 +40,7 @@
                     
                     </div>
                     @if($photos instanceof \Illuminate\Pagination\LengthAwarePaginator || $photos instanceof Illuminate\Pagination\Paginator)
-                        <div class="col-md-12 text-center">{!! $photos->render() !!}</div>
+                        <div class="col-md-12 text-center">{!! $photos->appends(\Request::except('page'))->render() !!}</div>
                     @endif
                 </div>
             </div>

@@ -24,12 +24,12 @@ $('#admin-photos-table')
         serverSide: true,
         ajax: $('#admin-photos-table').attr('data-source'), //$(this) is not working
         columns: [
-            {data: 'id'},
+            {name: 'photos.id', data: 'id'},
             {data: 'image', orderable: false, searchable: false},
             {data: 'title'},
             {data: 'name'},
-            {data: 'created_at'},
-            {data: 'updated_at'},
+            {name:'photos.created_at', data: 'created_at'},
+            {name: 'photos.updated_at', data: 'updated_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         fnInitComplete: function () {
