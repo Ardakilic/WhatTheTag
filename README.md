@@ -157,6 +157,12 @@ This application covers:
 
 ##Changelog
 
+####0.3.1
+
+* Assets now have relative path so that the script runs smoothly both with http and https protocols
+* Croppa configuration has been updated for upscales for the cases when the image is too small
+* Admin panel photo search is fixed.
+
 ####0.3.0
 
 * Got Gulp Switched with [sey](https://github.com/eserozvataf/sey), made by [Eser Özvataf](http://eser.ozvataf.com/). This way, assets building will be easier.
