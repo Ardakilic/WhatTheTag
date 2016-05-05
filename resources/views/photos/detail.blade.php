@@ -27,7 +27,7 @@
 {{-- /Twitter Metas --}}
 
 <link rel="image_src" href="{{ url('/uploads').$photo->image }} }}"/>
-@endsectioqn
+@endsection
 
 @section('content')
 <div class="container-fluid">
