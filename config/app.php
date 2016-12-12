@@ -149,7 +149,7 @@ return [
          * WthatTheTag and other 3rd party Service Providers
          */
         \Bkwld\Croppa\ServiceProvider::class,
-        \Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        \Cviebrock\EloquentSluggable\ServiceProvider::class,
         \Yajra\Datatables\DatatablesServiceProvider::class,
     ],
 

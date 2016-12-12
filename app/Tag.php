@@ -2,18 +2,26 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 
-class Tag extends Model implements SluggableInterface
+class Tag extends Model
 {
 
-    use SluggableTrait;
+    use Sluggable;
 
-    protected $sluggable = array(
-        'build_from' => 'title',
-        'save_to' => 'slug',
-    );
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     protected $fillable = ['title'];
 

@@ -1,9 +1,9 @@
 /vendor
 /public/storage
 /node_modules
+/npm-debug.log
 .env
 /temp_dir
-/.sey
 /.idea
 **/.DS_Store
 # Windows image file caches

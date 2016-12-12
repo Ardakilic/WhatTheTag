@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "cviebrock/eloquent-sluggable": "~3",
+        "cviebrock/eloquent-sluggable": "^4.1",
         "bkwld/croppa": "~4",
         "yajra/laravel-datatables-oracle": "~6.0",
         "filp/whoops": " ~1.0"

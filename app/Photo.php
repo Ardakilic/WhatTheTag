@@ -6,20 +6,28 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use DB;
 
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 use App\Traits\HasRandomStatementTrait;
 
-class Photo extends Model implements SluggableInterface
+class Photo extends Model
 {
 
-    use SluggableTrait;
+    use Sluggable;
     use HasRandomStatementTrait;
 
-    protected $sluggable = array(
-        'build_from' => 'title',
-        'save_to' => 'slug',
-    );
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     protected $fillable = ['user_id', 'title', 'image'];
 

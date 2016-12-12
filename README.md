@@ -151,11 +151,16 @@ This application covers:
 
 * Dynamic searching (Search as you type)
 * Caching
-* Elasticsearch integration
 * Google Vision API integration
 * ~~Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)~~
 
 ##Changelog
+
+####0.4.0
+
+* All dependencies are updated
+* Rollback to gulp
+* (WIP) Algolia implementation
 
 ####0.3.1
 
