@@ -4,10 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-use DB;
-
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Traits\HasRandomStatementTrait;
+
+use Storage;
 
 class Photo extends Model
 {
@@ -45,19 +45,31 @@ class Photo extends Model
     public static function upload(UploadedFile $file, $uploadPath = null)
     {
 
-        if (is_null($uploadPath)) {
-            $uploadPath = public_path() . '/uploads/';
+
+        if ($uploadPath === null) {
+            if (config('filesystems.cloud') === 'local') {
+                $uploadPath = public_path() . '/' . config('whatthetag.uploads_folder') . '/';
+            }
+            $uploadPath = config('whatthetag.uploads_folder') . '/';
         }
 
-        $fileName = str_slug(getFileName($file->getClientOriginalName())) . '.' . $file->getClientOriginalExtension();
 
-        //Make file name unique so it doesn't overwrite any old photos
-        while (file_exists($uploadPath . $fileName)) {
-            $fileName = str_slug(getFileName($file->getClientOriginalName())) . '-' . str_random(5) . '.' . $file->getClientOriginalExtension();
-        }
-        $file->move($uploadPath, $fileName);
+        $fileName = time() . str_slug(getFileName($file->getClientOriginalName())) . '.' . $file->getClientOriginalExtension();
 
-        return ['filename' => $fileName, 'fullpath' => $uploadPath . $fileName];
+        // Now let's upload
+        // With calling getDriver(), we can specift additional options upon uploading
+        // This way, we can set the storage class on the fly, unlike the configuration
+        Storage::disk(config('filesystems.cloud'))
+            ->getDriver()
+            ->put(
+                $uploadPath . $fileName,
+                file_get_contents($file),
+                [
+                    'StorageClass' => config('whatthetag.s3_storage_class', 'STANDARD'),
+                ]
+            );
+
+        return ['filename' => $fileName];
 
     }
 

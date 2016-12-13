@@ -16,4 +16,7 @@ return [
     //How many content will be displayed per page
     'pagination_count' => env('WTT_PAGINATION_COUNT', 12),
 
+    'uploads_folder'    => env('UPLOADS_FOLDER', 'uploads'),
+    's3_storage_class'    => env('S3_STORAGE_CLASS', 'STANDARD'),
+
 ];

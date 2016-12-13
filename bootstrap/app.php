@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -40,6 +42,13 @@ $app->singleton(
     'Illuminate\Contracts\Debug\ExceptionHandler',
     'App\Exceptions\Handler'
 );
+
+
+// WhatTheTag-specific
+// https://github.com/BKWLD/croppa#src-images-on-s3-local-crops
+$app->singleton('s3', function () {
+    return Storage::disk(config('filesystems.cloud'))->getDriver();
+});
 
 /*
 |--------------------------------------------------------------------------

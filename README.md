@@ -160,7 +160,6 @@ This application covers:
 
 * All dependencies are updated
 * Rollback to gulp
-* (WIP) Algolia implementation
 
 ####0.3.1
 

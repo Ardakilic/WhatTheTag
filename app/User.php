@@ -10,20 +10,29 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
-
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends Model implements AuthenticatableContract,
     AuthorizableContract,
-    CanResetPasswordContract,
-    SluggableInterface
+    CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
-    use SluggableTrait;
+    use Sluggable;
 
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     /**
      * The database table used by the model.
@@ -45,11 +54,6 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
-
-    protected $sluggable = array(
-        'build_from' => 'name',
-        'save_to' => 'slug',
-    );
 
     public function photos()
     {

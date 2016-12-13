@@ -217,7 +217,7 @@ class PhotoController extends Controller {
         //First, create(if needed) and return IDs of tags
         $tagIds            = Tag::createAndReturnArrayOfTagIds($request->get('tags'));
         
-        //If user wants to read the tags (keywords) from the file, then we need to fetch them from uploaded file.
+        /*//If user wants to read the tags (keywords) from the file, then we need to fetch them from uploaded file.
         if($request->has('read_tags_from_file')) {
             $exif = exif_read_data($upload['fullpath'], 'ANY_TAG', true);
             if($exif) {
@@ -232,7 +232,7 @@ class PhotoController extends Controller {
                     }
                 }
             }
-        }
+        }*/
         //Tag Stuff end
         
         $photo            = new Photo;

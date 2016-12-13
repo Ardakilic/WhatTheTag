@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'cloud' => 's3',
+    'cloud' => env('PHOTO_UPLOAD_STORAGE', 's3'),
 
     /*
     |--------------------------------------------------------------------------
@@ -50,10 +50,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => env('S3_BUCKET_KEY', 'your-key'),
+            'secret' => env('S3_BUCKET_SECRET', 'your-secret'),
+            'region' => env('S3_BUCKET_REGION', 'your-region'),
+            'bucket' => env('S3_BUCKET_NAME', 'your-bucket'),
         ],
 
         'rackspace' => [
