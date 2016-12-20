@@ -18,5 +18,6 @@ return [
 
     'uploads_folder'    => env('UPLOADS_FOLDER', 'uploads'),
     's3_storage_class'    => env('S3_STORAGE_CLASS', 'STANDARD'),
+    's3_storage_cdn_domain'    => env('S3_STORAGE_CDN_DOMAIN', 'https://hodor.s3.amazonaws.com/')
 
 ];

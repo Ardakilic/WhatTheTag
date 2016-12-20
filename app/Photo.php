@@ -42,30 +42,23 @@ class Photo extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
-    public static function upload(UploadedFile $file, $uploadPath = null)
+    public static function upload(UploadedFile $file)
     {
-
-
-        if ($uploadPath === null) {
-            if (config('filesystems.cloud') === 'local') {
-                $uploadPath = public_path() . '/' . config('whatthetag.uploads_folder') . '/';
-            }
-            $uploadPath = config('whatthetag.uploads_folder') . '/';
-        }
-
 
         $fileName = time() . str_slug(getFileName($file->getClientOriginalName())) . '.' . $file->getClientOriginalExtension();
 
         // Now let's upload
-        // With calling getDriver(), we can specift additional options upon uploading
-        // This way, we can set the storage class on the fly, unlike the configuration
+        // With calling getDriver() method, we can specify additional options upon uploading
+        // This way, we can set the storage class on the fly, unlike the Laravel's default configuration
         Storage::disk(config('filesystems.cloud'))
             ->getDriver()
             ->put(
-                $uploadPath . $fileName,
+                $fileName,
                 file_get_contents($file),
                 [
                     'StorageClass' => config('whatthetag.s3_storage_class', 'STANDARD'),
+                    // https://github.com/thephpleague/flysystem-aws-s3-v3/blob/dc56a8faf3aff0841f9eae04b6af94a50657896c/src/AwsS3Adapter.php#L387
+                    'ACL' => 'public-read',
                 ]
             );
 

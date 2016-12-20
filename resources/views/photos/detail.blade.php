@@ -9,7 +9,7 @@
 <meta property="og:title" content="{{ $photo->title }} - {{ config('whatthetag.site_name') }}" />
 <meta property="og:description" content="{{ $photo->title }} on {{ url('/') }}" />
 <meta property="og:url" content="{{ url('photo/detail/'. $photo->slug) }}" />
-<meta property="og:image" content="{{ url('/').Croppa::url('uploads/'. $photo->image, 600, 315) }}" />
+<meta property="og:image" content="{{ Croppa::url($photo->image, 600, 315) }}" />
 <meta property="og:image:width"  content="600" />
 <meta property="og:image:height" content="315" />
 <meta property="og:type" content="article" />
@@ -22,8 +22,8 @@
 <meta name="twitter:title" content="{{ $photo->title }} - {{ config('whatthetag.site_name') }}" />
 <meta name="twitter:description" content="{{ $photo->title }} on {{ url('/') }}" />
 <meta name="twitter:url" content="{{ url('/') }}" />
-<meta name="twitter:image:src" content="{{ url('/').Croppa::url('uploads/'. $photo->image, 600, 315) }}" />
-<meta name="twitter:image" content="{{ url('/').Croppa::url('uploads/'. $photo->image, 600, 315) }}" />
+<meta name="twitter:image:src" content="{{ url('/').Croppa::url($photo->image, 600, 315) }}" />
+<meta name="twitter:image" content="{{ url('/').Croppa::url($photo->image, 600, 315) }}" />
 {{-- /Twitter Metas --}}
 
 <link rel="image_src" href="{{ url('/uploads').$photo->image }} }}"/>
@@ -41,7 +41,11 @@
                         
                         <div class="col-md-8">
                             
-                            <img class="img-responsive" src="/uploads/{{ $photo->image }}">
+                            <img class="img-responsive" src="{{
+                                (config('filesystems.cloud') == 's3' ? config('whatthetag.s3_storage_cdn_domain') : '') .
+                                config('whatthetag.uploads_folder'). '/' .
+                                $photo->image
+                            }}">
                             
                             <div class="upper-margin">
                                 <strong><span>Author:</span></strong>

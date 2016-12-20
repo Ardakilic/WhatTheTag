@@ -16,7 +16,7 @@
      *      | string   IoC binding name of League\Flysystem\Cached\CachedAdapter
      */
     //'src_dir' => public_path().'/uploads',
-    'src_dir' => 's3',
+    'src_dir' => (env('PHOTO_UPLOAD_STORAGE') === 's3') ? 's3' : public_path() . '/uploads',
 
     /**
      * The directory where cropped images should be saved. The route to the
@@ -27,7 +27,7 @@
      *      | string   IoC binding name of League\Flysystem\Filesystem
      *      | string   IoC binding name of League\Flysystem\Cached\CachedAdapter
      */
-    'crops_dir' => public_path().'/uploads',
+    'crops_dir' => public_path() . '/uploads',
 
     /**
      * Maximum number of sizes to allow for a particular source file. This is to
@@ -56,7 +56,11 @@
      *
      * @var string
      */
-    'path' => 'uploads/(.*)$',
+    // NoteTheTag: :)
+    // We are at a subfolder at remote bucket, so we have to give full path for remote IoC binding to make it read
+    // That's why the path should match everything in s3 bucket, unlike the default one.
+    //'path' =>  (env('PHOTO_UPLOAD_STORAGE') === 's3') ? '(.*)$' : 'uploads/(.*)$',
+    'path'  => 'uploads/(.*)$',
 
     /**
      * A regex pattern that works like `path` except it is only used by the

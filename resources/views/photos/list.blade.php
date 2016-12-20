@@ -29,7 +29,7 @@
                                             </p>
                                         </p>
                                     </div>
-                                    <img src="{{ Croppa::url('/uploads/'.$photo->image, 400, 300) }}" alt="{{ $photo->title }}">
+                                    <img src="{{ Croppa::url('/'. config('whatthetag.uploads_folder') .'/'.$photo->image, 400, 300) }}" alt="{{ $photo->title }}">
                                 </div>
                             </div>
                         

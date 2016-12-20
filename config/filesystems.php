@@ -54,6 +54,7 @@ return [
             'secret' => env('S3_BUCKET_SECRET', 'your-secret'),
             'region' => env('S3_BUCKET_REGION', 'your-region'),
             'bucket' => env('S3_BUCKET_NAME', 'your-bucket'),
+            'root' => env('UPLOADS_FOLDER', 'uploads'),
         ],
 
         'rackspace' => [

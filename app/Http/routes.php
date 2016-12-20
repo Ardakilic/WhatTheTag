@@ -1,5 +1,9 @@
 <?php
 
+App::singleton('s3', function () {
+    return Storage::disk('s3')->getDriver();
+});
+
 Route::get('/', 'PhotoController@getIndex');
 Route::get('home', 'HomeController@index');
 
@@ -15,3 +19,11 @@ Route::controllers([
     'admin/users' => 'Admin\UserController',
     'admin/photos' => 'Admin\PhotoController',
 ]);
+
+Route::get('hede', function (){
+    dd(
+        [
+            Storage::disk('s3')->has('1482242968logokod.jpg'),
+        ]
+    );
+});

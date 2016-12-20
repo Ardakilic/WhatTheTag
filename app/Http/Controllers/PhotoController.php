@@ -199,7 +199,7 @@ class PhotoController extends Controller {
     {
         
         $validation = Validator::make($request->all(), [
-            'title'        => 'required|min:3',
+            'title'        => 'required|min:2',
             'photo'        => 'required|image',
             'tags'        => 'required'
         ]);
@@ -212,7 +212,7 @@ class PhotoController extends Controller {
         
         //Upload the image and return the filename and full path
         $upload            = Photo::upload($request->file('photo'));
-        
+
         //Tag Stuff
         //First, create(if needed) and return IDs of tags
         $tagIds            = Tag::createAndReturnArrayOfTagIds($request->get('tags'));
