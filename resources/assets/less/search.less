@@ -1,0 +1,63 @@
+/**
+ * Part of this CSS is based on this codepen:
+ * https://codepen.io/Algolia/pen/OXgkxv
+*/
+
+.algolia-autocomplete {
+  width: 100%;
+}
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 100%;
+}
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-top: none;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #B2D7FF;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+.aa-suggestion {
+  font-size: 1.1em;
+  padding: 4px 4px 0;
+  display: block;
+  width: 100%;
+  height: 38px;
+  clear: both;
+}
+.aa-suggestion span {
+  white-space: nowrap !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  float: left;
+  line-height: 2em;
+  width: calc(100% - 30px);
+}
+.aa-suggestion.aa-cursor {
+  background: #eee;
+}
+.aa-suggestion em {
+  color: #4098CE;
+}
+.aa-suggestion img {
+  float: left;
+  vertical-align: middle;
+  height: 30px;
+  width: 20px;
+  margin-right: 6px;
+}

@@ -40,8 +40,11 @@ return [
         'main' => [
             'id' => env('ALGOLIA_APP_ID', 'your-application-id'),
             'key' => env('ALGOLIA_ADMIN_API_KEY', 'your-api-key'),
-            // SEARCH APİ KEY GOES HERE
+
+            // These two are actually WhatTheTag-specific, so here goes
+            // SEARCH API KEY GOES HERE
             'search_key' => env('ALGOLIA_SEARCH_API_KEY', 'your-api-key'),
+            'indice_name' => env('ALGOLIA_INDICE_NAME', 'whatthetag')
         ],
 
         'alternative' => [

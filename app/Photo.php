@@ -32,9 +32,15 @@ class Photo extends Model
     }
 
 
-    public $indices = ['whatthetag'];
+    public $indices;
     public static $autoIndex = true;
     public static $autoDelete = true;
+
+    public function __construct($attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->indices = [config('algolia.connections.' . config('algolia.default') . '.indice_name')];
+    }
 
     public function getAlgoliaRecord()
     {
@@ -46,7 +52,7 @@ class Photo extends Model
         $this->tags;
 
         // When we set this method, $algoliaSettings is ignored, so we've to strip the function this:
-        $allowed = $this->algoliaSettings['attributesToIndex'];
+        $allowed = $this->algoliaSettings['searchableAttributes'];
         $elements = array_intersect_key($this->toArray(), array_flip($allowed));
 
         return array_merge($elements, [
@@ -61,9 +67,14 @@ class Photo extends Model
 
 
     public $algoliaSettings = [
-        'attributesToIndex' => [
+
+        'attributesToHighlight' => [
+            'title',
+            'user_name',
+            'tags',
+        ],
+        'searchableAttributes' => [
             'id',
-            'user_id',
             'title',
             'url',
             'image', //we may use this on croppa?

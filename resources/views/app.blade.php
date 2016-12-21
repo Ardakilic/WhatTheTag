@@ -9,10 +9,10 @@
     {{-- Fonts --}}
     <link href='//fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     
-    {{-- WhatTheTag-specific, compiled with sey --}}
+    {{-- WhatTheTag-specific, compiled with gulp --}}
     <link rel="stylesheet" href="/css/app.min.css" type="text/css">
     
-    <meta name="generator" content="WhatTheTag 0.3.0" />
+    <meta name="generator" content="WhatTheTag 0.4.0" />
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -104,102 +104,18 @@
     
     </div>
 </footer>
-{{-- WhatTheTag-specific, compiled with sey --}}
+{{-- Better to call these from CDN instead, because this may change quite rapidly --}}
+<script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<script>
+    var client = algoliasearch(
+        '{{config('algolia.connections.'.config('algolia.default').'.id')}}',
+        '{{config('algolia.connections.'.config('algolia.default').'.search_key')}}'
+    );
+    var index = client.initIndex('{{config('algolia.connections.'.config('algolia.default').'.indice_name')}}');
+</script>
+{{-- WhatTheTag-specific, compiled with gulp --}}
 <script src="/js/app.min.js"></script>
-
-
-    <style>
-        .algolia-autocomplete {
-            width: 100%;
-        }
-        .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-            width: 100%;
-        }
-        .algolia-autocomplete .aa-hint {
-            color: #999;
-        }
-        .algolia-autocomplete .aa-dropdown-menu {
-            width: 100%;
-            background-color: #fff;
-            border: 1px solid #999;
-            border-top: none;
-        }
-        .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-            cursor: pointer;
-            padding: 5px 4px;
-        }
-        .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-            background-color: #B2D7FF;
-        }
-        .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-            font-weight: bold;
-            font-style: normal;
-        }
-
-
-        .aa-suggestion {
-            font-size: 1.1em;
-            padding: 4px 4px 0;
-            display: block;
-            width: 100%;
-            height: 38px;
-            clear: both;
-        }
-        .aa-suggestion span {
-            white-space: nowrap !important;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            display: block;
-            float: left;
-            line-height: 2em;
-            width: calc(100% - 30px);
-        }
-        .aa-suggestion.aa-cursor {
-            background: #eee;
-        }
-        .aa-suggestion em {
-            color: #4098CE;
-        }
-        .aa-suggestion img {
-            float: left;
-            vertical-align: middle;
-            height: 30px;
-            width: 20px;
-            margin-right: 6px;
-        }
-
-
-    </style>
-
-    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
-    <script>
-        $(function(){
-
-            var client = algoliasearch(
-                '{{config('algolia.connections.'.config('algolia.connections.default').'.id')}}',
-                '{{config('algolia.connections.'.config('algolia.connections.default').'.search_key')}}'
-            );
-            var index = client.initIndex('whatthetag');
-            $('input[name="q"]').autocomplete({ hint: true }, [
-                {
-                    source: $.fn.autocomplete.sources.hits(index, { hitsPerPage: 5 }),
-                    displayKey: 'title',
-                    templates: {
-                        header: '<h5>Search Results</h5>',
-                        suggestion: function(suggestion) {
-                            return '<div class="picture"><img src="'+ suggestion._highlightResult.img_src.value +'" /></div><span class="name">' + suggestion._highlightResult.title.value + '<span>';
-                        },
-                        footer: '<div class="branding">Powered by <img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px;"  /></div>'
-                    }
-                }
-            ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-                console.log(suggestion, dataset);
-            });
-
-
-        });
-    </script>
 
 @yield('footer_assets')
 </body>

@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "1.12.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "01dd56a09db7fe6a5609fadbd7ad69d41c131375"
+                "reference": "dd0f04de8e33b091f546fd02e0d54311473c1e1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/01dd56a09db7fe6a5609fadbd7ad69d41c131375",
-                "reference": "01dd56a09db7fe6a5609fadbd7ad69d41c131375",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/dd0f04de8e33b091f546fd02e0d54311473c1e1f",
+                "reference": "dd0f04de8e33b091f546fd02e0d54311473c1e1f",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
             ],
             "description": "Algolia Search API Client for PHP",
             "homepage": "https://github.com/algolia/algoliasearch-client-php",
-            "time": "2016-12-09 13:30:25"
+            "time": "2016-12-21 14:12:19"
         },
         {
             "name": "algolia/algoliasearch-laravel",
@@ -107,16 +107,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.20.8",
+            "version": "3.20.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0e868349a6d834050f273540a8cb811bb7f6d1b7"
+                "reference": "b0d6f5694a6effb2f0c622b42a5c7bffb8949d04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0e868349a6d834050f273540a8cb811bb7f6d1b7",
-                "reference": "0e868349a6d834050f273540a8cb811bb7f6d1b7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b0d6f5694a6effb2f0c622b42a5c7bffb8949d04",
+                "reference": "b0d6f5694a6effb2f0c622b42a5c7bffb8949d04",
                 "shasum": ""
             },
             "require": {
@@ -183,7 +183,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-12-19 23:13:56"
+            "time": "2016-12-20 23:41:34"
         },
         {
             "name": "bkwld/croppa",

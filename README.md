@@ -9,7 +9,7 @@
 
 Hey all,
 
-Here's my latest project that came out using [Laravel 5](https://www.laravel.com). This is called **WhatTheTag**.
+Here's my latest project that came out using [Laravel 5.1 LTS](https://www.laravel.com). This is called **WhatTheTag**.
 
 ##Why?
 
@@ -41,8 +41,7 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 * [Composer](https://getcomposer.org) to install 3rd party dependencies
 * [npm](https://www.npmjs.com/) to install frontend dependencies
 * [gulp](http://gulpjs.com/) to compile assets
-* ~~[Ruby](https://www.ruby-lang.org/) Required for [gulp-ruby-sass](https://www.npmjs.com/package/gulp-ruby-sass),~~
-* ~~[Sass >= 3.4](http://sass-lang.com/install) Required for [gulp-ruby-sass](https://www.npmjs.com/package/gulp-ruby-sass). You can check it by running `sass --version` from your terminal.~~
+* A free account from [Algolia](https://www.algolia.com/referrals/01661aa1/join) to make the searches work properly.
 
 ##Showcase
 
@@ -95,8 +94,8 @@ npm update
 *  (optional) Thirdly, compile and install assets (Repository holds pre-compiled assets inside)
 
 ```shell
-npm install -g sey
-sey build
+npm install -g gulp
+gulp
 ```
 
 * Now, (if not created already,) create an `.env` file and fill your database credentials. You can copy it from `.env.example` file as a template.
@@ -108,7 +107,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-* Now, edit the app-specific configuration files found in `config/whatthetag.php`:
+* Now, edit the app-specific configuration files found in `.env` file and `config/whatthetag.php`:
 
 	* `site_name` defines the site's name (will be shown in the title etc.).
 	* `twitter_name` will fill the "shared via" section on Twitter share button.
@@ -116,6 +115,12 @@ php artisan db:seed
 	* `disqus_identifier` is your unique identifier in your Disqus panel. You can create a new identifier for your website by [following this link](https://disqus.com/admin/create/)
 
 * Make sure the `/public/uploads/` folder is writable.
+
+* Lastly, we need to set Algolia parameters, simply run `php artisan tinker` in the terminal, and paste the following:
+
+    `\App\Photo::setSettings();`
+
+This step will create the indice, and set the settings for Algolia.
 
 * Now, simply run the application. You can create a new virtualhost either from Apache, or Nginx etc.
 	
@@ -144,20 +149,21 @@ This application covers:
 * Example usage of Masterpages for views.
 * Downloading popular assets (jQuery, Bootstrap, FontAwesome etc.) from npm repositories, compile and merge them with application's own assets.
 * Handling file uploads and processing them.
-* Reading EXIF data from an uploaded image using PHP.
 * Has an authentication system, and role-based access middlewares.
+* Uses a 3rd party service for search on client side, and sets the records on the server side.
 
 ##TODOs
 
-* Dynamic searching (Search as you type)
+* ~~Dynamic searching (Search as you type)~~
 * Caching
-* Google Vision API integration
 * ~~Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)~~
 
 ##Changelog
 
 ####0.4.0
 
+* Algolia implementation!
+* AWS S3 implementation!
 * All dependencies are updated
 * Rollback to gulp
 

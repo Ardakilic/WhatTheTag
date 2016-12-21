@@ -19,11 +19,3 @@ Route::controllers([
     'admin/users' => 'Admin\UserController',
     'admin/photos' => 'Admin\PhotoController',
 ]);
-
-Route::get('hede', function (){
-    dd(
-        [
-            Storage::disk('s3')->has('1482242968logokod.jpg'),
-        ]
-    );
-});
