@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -151,6 +151,7 @@ return [
         \Bkwld\Croppa\ServiceProvider::class,
         \Cviebrock\EloquentSluggable\ServiceProvider::class,
         \Yajra\Datatables\DatatablesServiceProvider::class,
+        \AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
     ],
 
     /*

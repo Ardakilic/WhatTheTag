@@ -14,7 +14,8 @@
     "bkwld/croppa": "~4",
     "yajra/laravel-datatables-oracle": "~6.0",
     "filp/whoops": " ~1.0",
-    "league/flysystem-aws-s3-v3": "~1.0"
+    "league/flysystem-aws-s3-v3": "~1.0",
+    "algolia/algoliasearch-laravel": "^1.7"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

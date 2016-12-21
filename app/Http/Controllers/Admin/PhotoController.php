@@ -41,7 +41,7 @@ class PhotoController extends Controller
             ->addColumn('action', function ($photo) {
                 return '<a href="/admin/photos/edit/' . $photo->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="/admin/photos/delete/' . $photo->id . '" class="btn btn-xs btn-primary delete-button"><i class="glyphicon glyphicon-remove"></i> Delete</a>';
             })
-            ->editColumn('image', '<a href="#" data-modal-type="admin-modal" data-toggle="modal" data-target="#myModal" data-img-url="/uploads/{{ $image }}" data-img-title="{{ $title }}"><img class="thumbnail" data-toggle="tooltip" rel="thumbnail" title="Click for bigger version" src="{{ Croppa::url("/uploads/$image", 150, 120) }}" /></a>')
+            ->editColumn('image', '<a href="#" data-modal-type="admin-modal" data-toggle="modal" data-target="#myModal" data-img-url="{{ (config(\'filesystems.cloud\') == \'s3\' ? config(\'whatthetag.s3_storage_cdn_domain\') : \'\') . config(\'whatthetag.uploads_folder\') }}/{{ $image }}" data-img-title="{{ $title }}"><img class="thumbnail" data-toggle="tooltip" rel="thumbnail" title="Click for bigger version" src="{{ Croppa::url(\'/\'. config(\'whatthetag.uploads_folder\') .\'/\'.$image, 150, 120) }}" /></a>')
             ->editColumn('name', '<a href="/admin/users/edit/{{ $user_id }}">{{ $name }}</a>')
             ->removeColumn('user_id')
             ->make(true);
@@ -76,7 +76,7 @@ class PhotoController extends Controller
         }
 
         $validation = Validator::make($request->all(), [
-            'title' => 'required|min:3',
+            'title' => 'required|min:2',
             'photo' => 'image',
             'user_id' => 'required|integer|exists:users,id',
             'tags' => 'required'
@@ -104,7 +104,7 @@ class PhotoController extends Controller
         //First, create(if needed) and return IDs of tags
         $tagIds = Tag::createAndReturnArrayOfTagIds($request->get('tags'));
 
-        //If user wants to read the tags (keywords) from the file, then we need to fetch them from uploaded file.
+        /*//If user wants to read the tags (keywords) from the file, then we need to fetch them from uploaded file.
         if ($isFileUploaded && $request->has('read_tags_from_file')) {
             $exif = exif_read_data($upload['fullpath'], 'ANY_TAG', true);
             if ($exif) {
@@ -120,7 +120,7 @@ class PhotoController extends Controller
                 }
             }
         }
-        //Tag Stuff end
+        //Tag Stuff end*/
 
         $photo->user_id = $request->get('user_id');
         $photo->title = $request->get('title');
@@ -145,9 +145,8 @@ class PhotoController extends Controller
                 ->withError('Photo not found');
         }
 
-        //First delete the photo
-        Croppa::delete(public_path() . '/uploads/' . $photo->image);
-
+        // First delete the photo
+        Croppa::delete(config('whatthetag.uploads_folder'). '/' . $photo->image);
 
         //If foreign keys were not added to pivot table as on delete cascade, we also needed to delete the tags beforehand
         //I'm leaving this here just for reference

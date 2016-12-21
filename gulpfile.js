@@ -10,14 +10,14 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
 var config = {
-    jsPath            : './resources/assets/js',
-    lessPath        : './resources/assets/less',
-    nodePath        : './node_modules',
-    tempPath        : './temp_dir',
+    jsPath: './resources/assets/js',
+    lessPath: './resources/assets/less',
+    nodePath: './node_modules',
+    tempPath: './temp_dir',
     public: {
-        fontPath    : './public/fonts',
-        cssPath        : './public/css',
-        jsPath        : './public/js'
+        fontPath: './public/fonts',
+        cssPath: './public/css',
+        jsPath: './public/js'
     }
 };
 
@@ -29,7 +29,7 @@ var cssFiles = [
     '/bootstrap-tagsinput/dist/bootstrap-tagsinput.css',
     '/dropify/dist/css/dropify.min.css'
 ];
-cssFiles = cssFiles.map(function(el) {
+cssFiles = cssFiles.map(function (el) {
     return config.nodePath + el;
 });
 
@@ -42,25 +42,25 @@ var javaScripts = [
     '/social-share-js/dist/jquery.socialshare.min.js',
     '/dropify/dist/js/dropify.min.js'
 ];
-javaScripts = javaScripts.map(function(el) {
+javaScripts = javaScripts.map(function (el) {
     return config.nodePath + el;
 });
 
 
-gulp.task('build-fonts', function() {
+gulp.task('build-fonts', function () {
     return gulp.src([
         config.nodePath + '/font-awesome/fonts/**.*',
         config.nodePath + '/bootstrap/fonts/**.*',
         config.nodePath + '/dropify/dist/fonts/**.*'
     ])
-        .on('error', notify.onError(function(error) {
+        .on('error', notify.onError(function (error) {
                 return 'Error: ' + error.message;
             })
         )
         .pipe(gulp.dest(config.public.fontPath));
 });
 
-gulp.task('vendor-js', function() {
+gulp.task('vendor-js', function () {
     return gulp.src(javaScripts)
         .on('error', notify.onError(function (error) {
                 return 'Error: ' + error.message;
@@ -70,7 +70,7 @@ gulp.task('vendor-js', function() {
         .pipe(gulp.dest(config.tempPath));
 });
 
-gulp.task('app-js', function() {
+gulp.task('app-js', function () {
     return gulp.src(config.jsPath + '/**/*.js')
         .on('error', notify.onError(function (error) {
                 return 'Error: ' + error.message;
@@ -81,7 +81,7 @@ gulp.task('app-js', function() {
         .pipe(gulp.dest(config.tempPath));
 });
 
-gulp.task('merge-scripts', function() {
+gulp.task('merge-scripts', function () {
     return gulp.src([
         config.tempPath + '/vendor.min.js',
         config.tempPath + '/app-specific.min.js'
@@ -94,13 +94,13 @@ gulp.task('merge-scripts', function() {
         .pipe(gulp.dest(config.public.jsPath));
 });
 
-gulp.task('build-scripts', function() {
+gulp.task('build-scripts', function () {
     return runSequence('vendor-js', 'app-js', 'merge-scripts');
 });
 
-gulp.task('vendor-css', function(){
+gulp.task('vendor-css', function () {
     return gulp.src(cssFiles)
-        .on('error', notify.onError(function(error) {
+        .on('error', notify.onError(function (error) {
                 return 'Error: ' + error.message;
             })
         )
@@ -109,9 +109,9 @@ gulp.task('vendor-css', function(){
         .pipe(gulp.dest(config.tempPath));
 });
 
-gulp.task('app-css', function() {
+gulp.task('app-css', function () {
     return gulp.src(config.lessPath + '/**/*.less')
-        .on('error', notify.onError(function(error) {
+        .on('error', notify.onError(function (error) {
                 return 'Error: ' + error.message;
             })
         )
@@ -132,9 +132,9 @@ gulp.task('app-css', function() {
         .pipe(gulp.dest(config.tempPath));
 });
 
-gulp.task('merge-css', function() {
+gulp.task('merge-css', function () {
     return gulp.src([config.tempPath + '/vendor.min.css', config.tempPath + '/app-specific.min.css'])
-        .on('error', notify.onError(function(error) {
+        .on('error', notify.onError(function (error) {
                 return 'Error: ' + error.message;
             })
         )
@@ -142,16 +142,16 @@ gulp.task('merge-css', function() {
         .pipe(gulp.dest(config.public.cssPath));
 });
 
-gulp.task('build-css', function() {
+gulp.task('build-css', function () {
     return runSequence('vendor-css', 'app-css', 'merge-css');
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch(config.lessPath + '/**/*.less', ['build-css']);
     gulp.watch(config.jsPath + '/**/*.js', ['build-scripts']);
 });
 
-gulp.task('clean', function(cb) {
+gulp.task('clean', function (cb) {
     del([
             config.public.cssPath + '/*', config.public.jsPath + '/*',
             config.public.fontPath + '/*', config.tempPath + '/'
@@ -159,6 +159,6 @@ gulp.task('clean', function(cb) {
     );
 });
 
-gulp.task('default', function() {
+gulp.task('default', function () {
     return runSequence(['clean', 'build-fonts', 'build-css', 'build-scripts']);
 });

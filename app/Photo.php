@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Traits\HasRandomStatementTrait;
+use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 
 use Storage;
 
@@ -14,6 +15,7 @@ class Photo extends Model
 
     use Sluggable;
     use HasRandomStatementTrait;
+    use AlgoliaEloquentTrait;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -28,6 +30,52 @@ class Photo extends Model
             ]
         ];
     }
+
+
+    public $indices = ['whatthetag'];
+    public static $autoIndex = false;
+    public static $autoDelete = true;
+
+    public function getAlgoliaRecord()
+    {
+        /**
+         * Load the user relation so that it's available
+         *  in the laravel toArray method
+         */
+        $this->user;
+        $this->tags;
+
+        // When we set this method, $algoliaSettings is ignored, so we've to strip the function this:
+        $allowed = $this->algoliaSettings['attributesToIndex'];
+        $elements = array_intersect_key($this->toArray(), array_flip($allowed));
+
+        return array_merge($elements, [
+            'img_src' => config('whatthetag.s3_storage_cdn_domain') . config('whatthetag.uploads_folder') . '/' . $this->image,
+            'url' => config('app.url') . '/photo/detail/' . $this->slug,
+            'user_name' => $this->user->name,
+            'tags' => array_map(function ($data) {
+                return $data['title'];
+            }, $this->tags->toArray())
+        ]);
+    }
+
+
+    public $algoliaSettings = [
+        'attributesToIndex' => [
+            'id',
+            'user_id',
+            'title',
+            'url',
+            'img_src',
+            'user_name',
+            'tags',
+        ],
+        'customRanking' => [
+            'desc(popularity)',
+            //'desc(id)',
+        ],
+    ];
+
 
     protected $fillable = ['user_id', 'title', 'image'];
 

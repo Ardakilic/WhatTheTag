@@ -56,10 +56,6 @@
      *
      * @var string
      */
-    // NoteTheTag: :)
-    // We are at a subfolder at remote bucket, so we have to give full path for remote IoC binding to make it read
-    // That's why the path should match everything in s3 bucket, unlike the default one.
-    //'path' =>  (env('PHOTO_UPLOAD_STORAGE') === 's3') ? '(.*)$' : 'uploads/(.*)$',
     'path'  => 'uploads/(.*)$',
 
     /**

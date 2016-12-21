@@ -36,7 +36,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Current Photo</label>
                             <div class="col-md-6">
-                                <img src="/uploads/{{ $photo->image }}" width="100%">
+                                <img src="{{
+                                    (config('filesystems.cloud') == 's3' ? config('whatthetag.s3_storage_cdn_domain') : '') .
+                                    config('whatthetag.uploads_folder'). '/' .
+                                    $photo->image
+                                }}" width="100%">
                             </div>
                         </div>
 
@@ -47,16 +51,7 @@
                             </div>
                         </div>
                         
-                        {{-- Photo preview container, hidden as default with class hide from app.css --}}
-                        {{-- Disabled in favor of Dropify plugin--}}
-                        {{-- 
-                        <div class="form-group hide" id="previewGrp">
-                            <label class="col-md-4 control-label">Preview</label>
-                            <div class="col-md-6">
-                                <img src="" width="100%" id="previewImg" />
-                            </div>
-                        </div>
-                        --}}
+
                         <div class="form-group">
                             <label class="col-md-4 control-label">Tags</label>
                             <div class="col-md-6">
