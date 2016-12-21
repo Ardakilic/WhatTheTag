@@ -93,7 +93,7 @@ class PhotoController extends Controller
         if ($isFileUploaded) {
 
             //First, delete the old photos and all sizes using Croppa
-            Croppa::delete(public_path() . '/uploads/' . $photo->image);
+            Croppa::delete(config('whatthetag.uploads_folder'). '/' .  $photo->image);
 
             //Then Upload the image and return the filename
             $upload = Photo::upload($request->file('photo'));
