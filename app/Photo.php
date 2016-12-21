@@ -33,7 +33,7 @@ class Photo extends Model
 
 
     public $indices = ['whatthetag'];
-    public static $autoIndex = false;
+    public static $autoIndex = true;
     public static $autoDelete = true;
 
     public function getAlgoliaRecord()
@@ -66,6 +66,7 @@ class Photo extends Model
             'user_id',
             'title',
             'url',
+            'image', //we may use this on croppa?
             'img_src',
             'user_name',
             'tags',

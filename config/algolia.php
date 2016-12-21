@@ -40,6 +40,8 @@ return [
         'main' => [
             'id' => env('ALGOLIA_APP_ID', 'your-application-id'),
             'key' => env('ALGOLIA_ADMIN_API_KEY', 'your-api-key'),
+            // SEARCH APİ KEY GOES HERE
+            'search_key' => env('ALGOLIA_SEARCH_API_KEY', 'your-api-key'),
         ],
 
         'alternative' => [

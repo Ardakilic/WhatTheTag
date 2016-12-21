@@ -88,7 +88,7 @@
      *
      * @var string|boolean
      */
-    'signing_key' => 'app.key',
+    'signing_key' => false, //'app.key',
 
     /**
      * The PHP memory limit used by the script to generate thumbnails. Some
