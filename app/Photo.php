@@ -9,6 +9,7 @@ use App\Traits\HasRandomStatementTrait;
 use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 
 use Storage;
+use Croppa;
 
 class Photo extends Model
 {
@@ -57,6 +58,7 @@ class Photo extends Model
 
         return array_merge($elements, [
             'img_src' => config('whatthetag.s3_storage_cdn_domain') . config('whatthetag.uploads_folder') . '/' . $this->image,
+            'thumb_src' => Croppa::url('/'. config('whatthetag.uploads_folder') .'/'.$this->image, 400, 300),
             'url' => config('app.url') . '/photo/detail/' . $this->slug,
             'user_name' => $this->user->name,
             'tags' => array_map(function ($data) {
@@ -79,6 +81,7 @@ class Photo extends Model
             'url',
             'image', //we may use this on croppa?
             'img_src',
+            'thumb_src',
             'user_name',
             'tags',
         ],

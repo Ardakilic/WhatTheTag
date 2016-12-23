@@ -41,11 +41,13 @@
                 <ul class="nav navbar-nav">
                     
                     <li><a href="/recents">Recent Photos</a></li>
-                
+
                     @if(Auth::check())
                         <li><a href="{{ url('/photo/new') }}">New Photo</a></li>
                     @endif
-                    
+
+                    <li><a href="/search">Search for a Photo</a></li>
+
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">

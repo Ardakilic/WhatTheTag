@@ -39,87 +39,10 @@ class PhotoController extends Controller {
             ->withPhotos($photos);
     }
     
-    public function getSearch(Request $request)
+    public function getSearch()
     {
-
-        //Validation class maybe ? TODO
-        if(!$request->has('q')) {
-            return redirect('/')
-                ->withErrors('You must make a search from the bar first');
-        }
-        
-        //Let's escape first
-        $parameters = e($request->get('q'));
-        
-        $parameters    = explode(',', $parameters);
-        //Values may be like "param1", " param2" after exploding, so we also need to trim them
-        array_walk($parameters, 'trim');
-        
-        
-        $photos = Photo::with('user', 'tags')
-            
-            //Let's search the title first
-            ->where(function($q) use ($parameters){
-                
-                $j = 0;
-                foreach($parameters as $parameter) {
-                    
-                    if($j == 0) {
-                        $q->where('title', 'LIKE', '%'.$parameter.'%');
-                    } else {
-                        $q->orWhere('title', 'LIKE' ,'%'.$parameter.'%');
-                    }
-                
-                    $j++;
-                }
-                
-            })
-        
-            //Now, let's search the parameters in the tags
-            ->orWhere(function($q) use ($parameters) {
-                
-                $q->whereHas('tags', function($q2) use ($parameters) {
-                    
-                    $j = 0;
-                    foreach($parameters as $parameter) {
-                        
-                        if($j == 0) {
-                            $q2->where('title', 'LIKE', '%'.$parameter.'%');
-                        } else {
-                            $q2->orWhere('title', 'LIKE','%'.$parameter.'%');
-                        }
-                        
-                        $j++;
-                    }
-                });
-                
-            })
-            
-            //Lastly, let's search in the user name
-            ->orWhere(function($q) use ($parameters){
-                
-                $q->whereHas('user', function($q2) use ($parameters){
-                    
-                    $j = 0;
-                    foreach($parameters as $parameter) {
-                        
-                        if($j == 0) {
-                            $q2->where('name', 'LIKE', '%'.$parameter.'%');
-                        } else {
-                            $q2->orWhere('name', 'LIKE', '%'.$parameter.'%');
-                        }
-                        
-                        $j++;
-                    }
-                    
-                });
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(config('whatthetag.pagination_count'));
-            
-            return view('photos.list')
-                ->withTitle('Search results for: '.implode(', ', $parameters))
-                ->withPhotos($photos);
+        return view('photos.search')
+            ->withTitle('Search for a Photo!');
             
     }
     

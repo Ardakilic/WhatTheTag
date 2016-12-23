@@ -36,8 +36,7 @@
                         @empty
                             <div class="col-md-12 text-center">No photos found :(</div>
                         @endforelse
-                    
-                    
+
                     </div>
                     @if($photos instanceof \Illuminate\Pagination\LengthAwarePaginator || $photos instanceof Illuminate\Pagination\Paginator)
                         <div class="col-md-12 text-center">{!! $photos->appends(\Request::except('page'))->render() !!}</div>
