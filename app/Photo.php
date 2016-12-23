@@ -58,11 +58,14 @@ class Photo extends Model
 
         return array_merge($elements, [
             'img_src' => config('whatthetag.s3_storage_cdn_domain') . config('whatthetag.uploads_folder') . '/' . $this->image,
-            'thumb_src' => Croppa::url('/'. config('whatthetag.uploads_folder') .'/'.$this->image, 400, 300),
+            'thumb_src' => Croppa::url('/' . config('whatthetag.uploads_folder') . '/' . $this->image, 400, 300),
             'url' => config('app.url') . '/photo/detail/' . $this->slug,
             'user_name' => $this->user->name,
             'tags' => array_map(function ($data) {
-                return $data['title'];
+                return [
+                    'title' => $data['title'],
+                    'slug' => $data['slug'],
+                ];
             }, $this->tags->toArray())
         ]);
     }
@@ -79,7 +82,6 @@ class Photo extends Model
             'id',
             'title',
             'url',
-            'image', //we may use this on croppa?
             'img_src',
             'thumb_src',
             'user_name',

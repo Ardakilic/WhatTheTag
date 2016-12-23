@@ -98,7 +98,10 @@ npm install -g gulp
 gulp
 ```
 
-* Now, (if not created already,) create an `.env` file and fill your database credentials. You can copy it from `.env.example` file as a template.
+* Now, (if not created already,) create an `.env` file and fill all of your credentials required for the service to run. You can copy it from `.env.example` file as a template.
+```
+cp .env.example .env
+```
 
 * Now, install the database schema from migration, and seed the users table for the administrator user:
 
@@ -123,19 +126,20 @@ php artisan db:seed
 This step will create the indice, and set the settings for Algolia.
 
 * Now, simply run the application. You can create a new virtualhost either from Apache, or Nginx etc.
-	
+
 	**Note:** PHP's own web server (e.g. if you're running it with `php artisan serve`) will give 404 erros in administration panel, because Datatables's AJAX links are quite long, and it gives 404 errors on very long links unless you edit this setting.
-	
+
 * Now you can login into your application.
 
 	Default username is `admin@whatthetag.com`
 	The default password is `whatthetag`
-	
+
 	*Don't forget to change these after logging in!*
 
 * Now, simply navigate through your app and enjoy! :smile:
 
 ##Digging the Code?
+
 Well, you should do this!
 
 Why you may ask. Because one of the reasons of this app is to make a sample application using Laravel 5.
@@ -165,7 +169,7 @@ This application covers:
 * Algolia implementation!
 * AWS S3 implementation!
 * All dependencies are updated
-* Rollback to gulp
+* Rollback to gulp for asset automation
 
 ####0.3.1
 
@@ -202,5 +206,5 @@ This application covers:
 
 ##Thanks
 
-* [Koding](https://koding.com/R/arda), all of the project is written on the cloud using Koding's service on their VMs and my machine directly from my browser. You must definitely try the service, also it's free!
+* [Koding](https://koding.com/R/arda), all of baby steps of the project is written on the cloud using Koding's service on their VMs and my machine directly from my browser. You must definitely try the service, also it's free!
 * [Burak Can](https://twitter.com/neoberg) and [Eser Özvataf](http://eser.ozvataf.com/) for their ideas especially while handling assets.
