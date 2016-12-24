@@ -29,7 +29,7 @@ function triggerTooltips() {
         $('#myModal #modalTagWrapper').html('<h4>' + $(this).closest('.caption').find('.tagsWrapper').html() + '<h4>');
     });
 
-    console.log('Tooltip triggered!');
+    //console.log('Tooltip triggered!');
 }
 
 triggerTooltips();

@@ -15,5 +15,6 @@ autocomplete('input[name="q"]', {hint: true}, [
         }
     }
 ]).on('autocomplete:selected', function (event, suggestion, dataset) {
-    console.log(suggestion, dataset);
+    //console.log(suggestion, dataset);
+    window.location = '/photo/detail/' + suggestion.slug;
 });

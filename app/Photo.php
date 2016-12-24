@@ -59,7 +59,7 @@ class Photo extends Model
         return array_merge($elements, [
             'img_src' => config('whatthetag.s3_storage_cdn_domain') . config('whatthetag.uploads_folder') . '/' . $this->image,
             'thumb_src' => Croppa::url('/' . config('whatthetag.uploads_folder') . '/' . $this->image, 400, 300),
-            'url' => config('app.url') . '/photo/detail/' . $this->slug,
+            //'url' => config('app.url') . '/photo/detail/' . $this->slug,
             'user_name' => $this->user->name,
             'tags' => array_map(function ($data) {
                 return [
@@ -81,7 +81,7 @@ class Photo extends Model
         'searchableAttributes' => [
             'id',
             'title',
-            'url',
+            'slug',
             'img_src',
             'thumb_src',
             'user_name',
