@@ -123,7 +123,13 @@ class Photo extends Model
                 [
                     'StorageClass' => config('whatthetag.s3_storage_class', 'STANDARD'),
                     // https://github.com/thephpleague/flysystem-aws-s3-v3/blob/dc56a8faf3aff0841f9eae04b6af94a50657896c/src/AwsS3Adapter.php#L387
+
+                    // Set visibility to public
                     'ACL' => 'public-read',
+
+                    //Let's add a year for cache headers:
+                    'CacheControl' => 'max-age=31536000, public',
+                    'Expires' => gmdate("D, d M Y H:i:s", time() + 31536000) . " GMT",
                 ]
             );
 
