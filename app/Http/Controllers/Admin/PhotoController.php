@@ -48,6 +48,8 @@ class PhotoController extends Controller
     }
 
 
+    // Creation methods are exactly the same as the PhotoController@getNew and postNew, so no need to copy-paste here.
+
     public function getEdit($id)
     {
         $photo = Photo::with('user', 'tags')->find($id);
@@ -93,7 +95,7 @@ class PhotoController extends Controller
         if ($isFileUploaded) {
 
             //First, delete the old photos and all sizes using Croppa
-            Croppa::delete(config('whatthetag.uploads_folder'). '/' .  $photo->image);
+            Croppa::delete(config('whatthetag.uploads_folder') . '/' . $photo->image);
 
             //Then Upload the image and return the filename
             $upload = Photo::upload($request->file('photo'));
@@ -132,6 +134,9 @@ class PhotoController extends Controller
         //Now, sync all the associated tags
         $photo->tags()->sync($tagIds);
 
+        // Push to Algolia, auto-index disabled because event is fired before pivot table sync.
+        $photo->pushToIndex();
+
         return back()
             ->withSuccess('Photo updated successfully!');
     }
@@ -146,13 +151,18 @@ class PhotoController extends Controller
         }
 
         // First delete the photo
-        Croppa::delete(config('whatthetag.uploads_folder'). '/' . $photo->image);
+        Croppa::delete(config('whatthetag.uploads_folder') . '/' . $photo->image);
 
         //If foreign keys were not added to pivot table as on delete cascade, we also needed to delete the tags beforehand
         //I'm leaving this here just for reference
         //$photo->tags()->detach();
 
         $photo->delete();
+
+        // Remove From Algolia
+        // Commented-out, because event can handle this well enough,
+        // unlike upon creation and update which also has to mess with pivot table stuff
+        // $photo->removeFromIndex();
 
         return back()
             ->withSuccess('Photo deleted successfully!');

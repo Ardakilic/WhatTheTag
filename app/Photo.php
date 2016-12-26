@@ -34,7 +34,10 @@ class Photo extends Model
 
 
     public $indices;
-    public static $autoIndex = true;
+
+    // $autoIndex is set to false, because there is a pivot relationship and this doesn't fire the event
+    // Delete can still be done automatically
+    public static $autoIndex = false;
     public static $autoDelete = true;
 
     public function __construct($attributes = [])
@@ -127,9 +130,9 @@ class Photo extends Model
                     // Set visibility to public
                     'ACL' => 'public-read',
 
-                    //Let's add a year for cache headers:
-                    'CacheControl' => 'max-age=31536000, public',
-                    'Expires' => gmdate("D, d M Y H:i:s", time() + 31536000) . " GMT",
+                    //Let's add a decade for cache headers:
+                    'CacheControl' => 'max-age=315360000, public',
+                    'Expires' => gmdate("D, d M Y H:i:s", time() + 315360000) . " GMT",
                 ]
             );
 
