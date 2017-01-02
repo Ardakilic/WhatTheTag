@@ -96,10 +96,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 pull-left text-left">
-                <p class="text-muted">&copy; 2015-{{date('Y')}} WhatTheTag by <a href="https://arda.kilicdagi.com" target="_blank">Arda Kılıçdağı</a>, </p>
+                <p class="text-muted">&copy; 2015-{{date('Y')}} WhatTheTag, </p>
             </div>
             <div class="col-md-6 pull-right text-right">
-                <p class="text-muted"><a href="https://github.com/ardakilic/whatthetag" target="_blank">Get the source on <i class="fa fa-github fa-2x"></i></a></p>
+                <p class="text-muted"><a href="https://github.com/ardakilic/whatthetag" target="_blank">Contribute on <i class="fa fa-github fa-2x"></i></a></p>
             </div>
         </div>
     </div>

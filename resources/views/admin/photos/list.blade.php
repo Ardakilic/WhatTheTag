@@ -46,7 +46,7 @@
                 <h4 class="modal-title" id="myModalTitle">Modal title</h4>
             </div>
             <div class="modal-body">
-                <img src=""class="img-responsive">
+                <img src="" class="img-responsive">
             </div>
             <div class="modal-footer">
                 <div class="row">
