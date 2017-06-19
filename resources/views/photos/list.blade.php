@@ -19,7 +19,11 @@
                                 <div class="thumbnail list-thumbnail">
                                     <div class="caption list-caption">
                                         <h4><a rel="tooltip" data-placement="bottom" title="go to photo" href="/photo/detail/{{ $photo->slug }}">{{ $photo->title }}</a></h4>
-                                        <p><a href="#" data-link-type="list-modal" data-toggle="modal" data-target="#myModal" data-img-url="/uploads/{{ $photo->image }}" data-img-title="{{ $photo->title }}" class="label label-danger" rel="tooltip index-modal" title="Zoom">Zoom</a></p>
+                                        <p><a href="#" data-link-type="list-modal" data-toggle="modal" data-target="#myModal" data-img-url="{{
+                                            (config('filesystems.cloud') == 's3' ? config('whatthetag.s3_storage_cdn_domain') : '') .
+                                            config('whatthetag.uploads_folder'). '/' .
+                                            $photo->image
+                                        }}" data-img-title="{{ $photo->title }}" class="label label-danger" rel="tooltip index-modal" title="Zoom">Zoom</a></p>
                                         <p>
                                             <h5>Tags:</h5>
                                             <p class="tagsWrapper">
