@@ -27,7 +27,7 @@ class CreatePhotosTable extends Migration
             $table->string('slug', 400)->index();
 
             $table->string('image', 400);
-			
+
             $table->timestamps();
         });
     }
