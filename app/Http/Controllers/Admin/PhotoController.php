@@ -59,7 +59,7 @@ class PhotoController extends Controller
         }
 
         //We also need a dropdown for users
-        $users = User::lists('name', 'id');
+        $users = User::pluck('name', 'id');
 
         return view('admin.photos.edit')
             ->withTitle('Editing Photo: ' . $photo->title)
