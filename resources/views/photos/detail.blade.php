@@ -165,12 +165,14 @@ $('ul[data-group="social-buttons"]').socialShare({
     twitterHashTags    : '{{ implode(', ', $photo->tags()->lists('title')->all()) }}',
 });
 
-var disqus_shortname = '{{ config('whatthetag.disqus_identifier') }}';
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
+@if(config('whatthetag.comments_enabled'))
+    var disqus_shortname = '{{ config('whatthetag.disqus_identifier') }}';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+@endif
 
 </script>
 @stop

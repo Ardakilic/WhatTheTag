@@ -27,7 +27,7 @@ $('#admin-photos-table')
             {name: 'photos.id', data: 'id'},
             {data: 'image', orderable: false, searchable: false},
             {data: 'title'},
-            {data: 'name'},
+            {data: 'name', searchable: false},
             {name:'photos.created_at', data: 'created_at'},
             {name: 'photos.updated_at', data: 'updated_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}

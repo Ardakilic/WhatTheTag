@@ -95,7 +95,12 @@ class PhotoController extends Controller
         if ($isFileUploaded) {
 
             //First, delete the old photos and all sizes using Croppa
-            Croppa::delete(config('whatthetag.uploads_folder') . '/' . $photo->image);
+            try {
+                Croppa::delete(config('whatthetag.uploads_folder') . '/' . $photo->image);
+            } catch(\Exception $e) {
+                // Remote source may not be there for some reasons, we don't want exception to be thrown here
+                // You can log $e->getMessage() here.
+            }
 
             //Then Upload the image and return the filename
             $upload = Photo::upload($request->file('photo'));
