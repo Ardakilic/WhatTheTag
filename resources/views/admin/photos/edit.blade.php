@@ -56,7 +56,7 @@
                             <label class="col-md-4 control-label">Tags</label>
                             <div class="col-md-6">
                                 {{-- bootstrap-tagsinput needs this to have 100% width to show properly --}}
-                                <input data-role="tagsinput" style="width:100%" type="text" class="form-control" name="tags" value="{{ old('tags', implode(', ', $photo->tags->lists('title')->all())) }}">
+                                <input data-role="tagsinput" style="width:100%" type="text" class="form-control" name="tags" value="{{ old('tags', implode(', ', $photo->tags->pluck('title')->all())) }}">
                             </div>
                         </div>
                         
