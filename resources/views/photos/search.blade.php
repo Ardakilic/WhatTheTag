@@ -100,9 +100,9 @@
     <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch-preact.min.js"></script>
     <script>
         var search = instantsearch({
-            appId: '{{config('algolia.connections.'.config('algolia.default').'.id')}}',
-            apiKey: '{{config('algolia.connections.'.config('algolia.default').'.search_key')}}',
-            indexName: '{{config('algolia.connections.'.config('algolia.default').'.indice_name')}}',
+            appId: '{{config('scout.algolia.id')}}',
+            apiKey: '{{config('scout.algolia.search.search_key')}}',
+            indexName: '{{config('scout.algolia.search.indice_name')}}',
             urlSync: true
         });
 

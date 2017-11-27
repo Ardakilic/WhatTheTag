@@ -9,14 +9,15 @@
   "type": "project",
   "require": {
     "php": ">=7.0.0",
-    "laravel/framework": "5.5.*",
-    "laravel/tinker": "~1.0",
-    "fideloper/proxy": "~3.3",
-    "cviebrock/eloquent-sluggable": "^4.3",
     "bkwld/croppa": "~4",
-    "yajra/laravel-datatables-oracle": "8.*",
+    "cviebrock/eloquent-sluggable": "^4.3",
+    "fideloper/proxy": "~3.3",
+    "laravel/framework": "5.5.*",
+    "laravel/scout": "^3.0",
+    "algolia/algoliasearch-client-php": "^1.23",
+    "laravel/tinker": "~1.0",
     "league/flysystem-aws-s3-v3": "~1.0",
-    "algolia/algoliasearch-laravel": "^1.7"
+    "yajra/laravel-datatables-oracle": "8.*"
   },
   "require-dev": {
     "filp/whoops": "~2.0",

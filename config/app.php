@@ -174,7 +174,6 @@ return [
         Bkwld\Croppa\ServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
     ],
 
