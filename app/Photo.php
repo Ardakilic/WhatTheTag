@@ -6,17 +6,18 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Traits\HasRandomStatementTrait;
-use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 
 use Storage;
 use Croppa;
+
+use Laravel\Scout\Searchable;
 
 class Photo extends Model
 {
 
     use Sluggable;
     use HasRandomStatementTrait;
-    use AlgoliaEloquentTrait;
+    use Searchable;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -32,21 +33,23 @@ class Photo extends Model
         ];
     }
 
-
-    public $indices;
-
-    // $autoIndex is set to false, because there is a pivot relationship and this doesn't fire the event
-    // Delete can still be done automatically
-    public static $autoIndex = false;
-    public static $autoDelete = true;
-
-    public function __construct($attributes = [])
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
     {
-        parent::__construct($attributes);
-        $this->indices = [config('algolia.connections.' . config('algolia.default') . '.indice_name')];
+        return config('scout.algolia.search.indice_name');
     }
 
-    public function getAlgoliaRecord()
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
     {
         /**
          * Load the user relation so that it's available

@@ -111,10 +111,10 @@
 <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 <script>
     var client = algoliasearch(
-        '{{config('algolia.connections.'.config('algolia.default').'.id')}}',
-        '{{config('algolia.connections.'.config('algolia.default').'.search_key')}}'
+        '{{config('scout.algolia.id')}}',
+        '{{config('scout.algolia.search.search_key')}}'
     );
-    var index = client.initIndex('{{config('algolia.connections.'.config('algolia.default').'.indice_name')}}');
+    var index = client.initIndex('{{config('scout.algolia.search.indice_name')}}');
 </script>
 {{-- WhatTheTag-specific, compiled with gulp --}}
 <script src="/js/app.min.js"></script>

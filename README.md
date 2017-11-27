@@ -37,7 +37,7 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 
 ## Requirements
 
-* [Laravel 5.2's server requirements](http://laravel.com/docs/5.2/installation#installation)
+* [Laravel 5.5's server requirements](http://laravel.com/docs/5.5/installation#installation)
 * [Composer](https://getcomposer.org) to install 3rd party dependencies
 * [npm](https://www.npmjs.com/) to install frontend dependencies
 * [gulp](http://gulpjs.com/) to compile assets
@@ -170,9 +170,14 @@ Thanks in advance!
 * Caching
 * ~~Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)~~
 * Every front-end photo pages should be served using Algolia
-* Algoliasearch-laravel should be changed with Laravel Scout.
+* ~~Algoliasearch-laravel should be changed with Laravel Scout.~
 
-## Changelog
+## Changelog~
+
+#### 0.5.0
+* Script upgraded to Laravl 5.5
+* Algolia Back-end Client changed to a more up-to-date engine, called Laravel Scout
+* One of the modal views fixed to show images properly.
 
 #### 0.4.0
 

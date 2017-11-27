@@ -169,8 +169,8 @@ class PhotoController extends Controller
         //Now attach the tags, since this is creating method, attach() is okay
         $photo->tags()->attach($tagIds);
 
-        // Push to Algolia, auto-index disabled because event is fired before pivot table sync.
-        $photo->pushToIndex();
+        // Re-Push to Algolia, auto-index disabled because event is fired before pivot table sync.
+        $photo->searchable();
 
         return back()
             ->withSuccess('Photo Created Successfully!');
