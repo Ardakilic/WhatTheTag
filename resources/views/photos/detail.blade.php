@@ -2,7 +2,7 @@
 
 @section('header_assets')
 
-<meta name="keywords" content="{{ implode(', ', $photo->tags()->lists('title')->all()) }}">
+<meta name="keywords" content="{{ implode(', ', $photo->tags()->pluck('title')->all()) }}">
 <meta name="description" content="{{ $photo->title }}">
 
 {{-- Opengraph metas --}}
@@ -162,7 +162,7 @@ $('ul[data-group="social-buttons"]').socialShare({
     image            : '{{ asset('uploads/'.$photo->image) }}',
     counts            : false,
     twitterVia        : '{{ config('whatthetag.twitter_name') }}',
-    twitterHashTags    : '{{ implode(', ', $photo->tags()->lists('title')->all()) }}',
+    twitterHashTags    : '{{ implode(', ', $photo->tags()->pluck('title')->all()) }}',
 });
 
 @if(config('whatthetag.comments_enabled'))

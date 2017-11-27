@@ -15,7 +15,9 @@ class CheckSlugFirstParameterMiddleware
     public function handle($request, Closure $next)
     {
 
-        $firstParam = $request->route()->parameters()['one'];
+        //Parameters return the variable name defined in route if not
+        //set as Route::controller() which is now deprecated.
+        $firstParam = $request->route()->parameters()['slug'];
 
         if (!preg_match("/^[0-9A-z-_]+$/", $firstParam)) {
             return response('Wrong input', 403);

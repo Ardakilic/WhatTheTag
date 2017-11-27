@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Photo;
 use App\User;
 use App\Tag;
-use Datatables;
+//use Datatables;
 use Validator;
 use Croppa;
 
@@ -37,13 +37,15 @@ class PhotoController extends Controller
                 'photos.updated_at as updated_at'
             ]);
 
-        return Datatables::of($photos)
+        return datatables()->of($photos)
             ->addColumn('action', function ($photo) {
                 return '<a href="/admin/photos/edit/' . $photo->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="/admin/photos/delete/' . $photo->id . '" class="btn btn-xs btn-primary delete-button"><i class="glyphicon glyphicon-remove"></i> Delete</a>';
             })
             ->editColumn('image', '<a href="#" data-modal-type="admin-modal" data-toggle="modal" data-target="#myModal" data-img-url="{{ (config(\'filesystems.cloud\') == \'s3\' ? config(\'whatthetag.s3_storage_cdn_domain\') : \'\') . config(\'whatthetag.uploads_folder\') }}/{{ $image }}" data-img-title="{{ $title }}"><img class="thumbnail" data-toggle="tooltip" rel="thumbnail" title="Click for bigger version" src="{{ Croppa::url(\'/\'. config(\'whatthetag.uploads_folder\') .\'/\'.$image, 150, 120) }}" /></a>')
             ->editColumn('name', '<a href="/admin/users/edit/{{ $user_id }}">{{ $name }}</a>')
             ->removeColumn('user_id')
+            //https://github.com/yajra/laravel-datatables/issues/949#issuecomment-275834424
+            ->rawColumns(['action', 'image', 'name'])
             ->make(true);
     }
 
@@ -59,7 +61,7 @@ class PhotoController extends Controller
         }
 
         //We also need a dropdown for users
-        $users = User::lists('name', 'id');
+        $users = User::pluck('name', 'id');
 
         return view('admin.photos.edit')
             ->withTitle('Editing Photo: ' . $photo->title)

@@ -9,9 +9,9 @@
 
 Hey all,
 
-Here's my latest project that came out using [Laravel 5.1 LTS](https://www.laravel.com). This is called **WhatTheTag**.
+Here's my latest project that came out using [Laravel](https://www.laravel.com). This is called **WhatTheTag**.
 
-##Why?
+## Why?
 
 There are some reasons behind this project.
 
@@ -35,15 +35,15 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 * In **administration panel**, while uploading / editing a photo, **you may also fetch the EXIF data of a photo directly and add them into the tags**. So let's say you've already tagged a photo before. If it's tagged normally, the system gets the tags and adds them into the tags list of the photo.
 * You can also preview the photo before uploading.
 
-##Requirements
+## Requirements
 
-* [Laravel 5.1's server requirements](http://laravel.com/docs/5.1/installation#installation)
+* [Laravel 5.2's server requirements](http://laravel.com/docs/5.2/installation#installation)
 * [Composer](https://getcomposer.org) to install 3rd party dependencies
 * [npm](https://www.npmjs.com/) to install frontend dependencies
 * [gulp](http://gulpjs.com/) to compile assets
 * A free account from [Algolia](https://www.algolia.com/referrals/01661aa1/join) to make the searches work properly.
 
-##Showcase
+## Showcase
 
 **Main page**
 ![](https://i.imgur.com/3wFQriO.png)
@@ -69,7 +69,7 @@ After deciding to make this app, it took maybe a week or so in my spare times to
 
 You can check all the images at [this Imgur album](https://imgur.com/a/pK047).
 
-##Installation
+## Installation
 
 * First, clone the repository into your server
 
@@ -138,7 +138,7 @@ This step will create the indice, and set the settings for Algolia.
 
 * Now, simply navigate through your app and enjoy! :smile:
 
-##Digging the Code?
+## Digging the Code?
 
 Well, you should do this!
 
@@ -156,28 +156,38 @@ This application covers:
 * Has an authentication system, and role-based access middlewares.
 * Uses a 3rd party service for search on client side, and sets the records on the server side.
 
-##TODOs
+## Donations
+Any donations would be highly appreciated.
+You can buy me a cup of coffee by donating some bitcoins to this addres:
+
+ **﻿1QFHeSrhWWVhmneDBkArKvpmPohRjpf7p6** 
+ 
+Thanks in advance!
+
+## TODOs
 
 * ~~Dynamic searching (Search as you type)~~
 * Caching
 * ~~Better file uploads, such as [Dropify](http://jeremyfagis.github.io/dropify/)~~
+* Every front-end photo pages should be served using Algolia
+* Algoliasearch-laravel should be changed with Laravel Scout.
 
-##Changelog
+## Changelog
 
-####0.4.0
+#### 0.4.0
 
 * Algolia implementation!
 * AWS S3 implementation!
 * All dependencies are updated
 * Rollback to gulp for asset automation
 
-####0.3.1
+#### 0.3.1
 
 * Assets now have relative path so that the script runs smoothly both with http and https protocols
 * Croppa configuration has been updated for upscales for the cases when the image is too small
 * Admin panel photo search is fixed.
 
-####0.3.0
+#### 0.3.0
 
 * Got Gulp Switched with [sey](https://github.com/eserozvataf/sey), made by [Eser Özvataf](http://eser.ozvataf.com/). This way, assets building will be easier.
 * All dependencies' versions updated.
@@ -185,26 +195,26 @@ This application covers:
 * All configuration values are now fetched from environment vars. Check `.env.example` file and find all variables prefixed with `WTT_`.
 * A new trait added for random methods, so it will run out of the box also with Postgres etc.
 
-####0.2.2
+#### 0.2.2
 
 * [Dropify](http://jeremyfagis.github.io/dropify/) integrated to upload forms. **You can now drag & drop the images!**
 * Custom 404 page added for the situations when debug is closed.
 * Tabs are switched with four spaces in (hopefully every part of the) project.
 
-####0.2.1
+#### 0.2.1
 
 * Got Sass switched with Less, because there is almost no need for Sass, and it brings additional installations of Ruby and Sass to the server. This way it's lighter. Thanks to @eserozvataf
 
-####0.2.0
+#### 0.2.0
 
 * Application updated to Laravel 5.1
 * Assets and Requirements updated
 
-####0.1.0
+#### 0.1.0
 
 * First Release
 
-##Thanks
+## Thanks
 
 * [Koding](https://koding.com/R/arda), all of baby steps of the project is written on the cloud using Koding's service on their VMs and my machine directly from my browser. You must definitely try the service, also it's free!
 * [Burak Can](https://twitter.com/neoberg) and [Eser Özvataf](http://eser.ozvataf.com/) for their ideas especially while handling assets.

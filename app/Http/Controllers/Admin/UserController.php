@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use Hash;
-use Datatables;
+//use Datatables;
 use Validator;
 
 class UserController extends Controller
@@ -38,10 +38,12 @@ class UserController extends Controller
             'role', 'created_at', 'updated_at'
         ]);
 
-        return Datatables::of($users)
+        return datatables()->of($users)
             ->addColumn('action', function ($user) {
                 return '<a href="/admin/users/edit/' . $user->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="/admin/users/delete/' . $user->id . '" class="btn btn-xs btn-primary delete-button"><i class="glyphicon glyphicon-remove"></i> Delete</a>';
             })
+            //https://github.com/yajra/laravel-datatables/issues/949#issuecomment-275834424
+            ->rawColumns(['action'])
             ->make(true);
 
     }
