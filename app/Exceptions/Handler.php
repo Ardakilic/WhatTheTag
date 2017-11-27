@@ -3,27 +3,27 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Session\TokenMismatchException;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-
 
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that should not be reported.
+     * A list of the exception types that are not reported.
      *
      * @var array
      */
     protected $dontReport = [
-        AuthorizationException::class,
-        HttpException::class,
-        ModelNotFoundException::class,
-        TokenMismatchException::class,
-        ValidationException::class,
+        //
+    ];
+
+    /**
+     * A list of the inputs that are never flashed for validation exceptions.
+     *
+     * @var array
+     */
+    protected $dontFlash = [
+        'password',
+        'password_confirmation',
     ];
 
     /**
@@ -43,56 +43,11 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
-     * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
-     */
-    public function render($request, Exception $e)
-    {
-
-        //Whoops integrated
-        //Thanks to : http://ryanwinchester.ca/post/whoops-in-laravel-5-1
-        if (config('app.debug')) {
-            return $this->renderExceptionWithWhoops($request, $e);
-        }
-        
-        //Laravel automatically finds the 404 view, these lines are not needed either
-        /* else {
-            return response()->view('errors.404', [], 404);
-        }*/
-        
-        //I want everything to be handled with whoops. So I'm commenting out these
-        /*
-        if ($e instanceof ModelNotFoundException) {
-            $e = new NotFoundHttpException($e->getMessage(), $e);
-        }
-        */
-
-        return parent::render($request, $e);
-    }
-    
-    
-    /**
-     * Render an exception using Whoops.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Exception $e
+     * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    protected function renderExceptionWithWhoops($request, Exception $e)
+    public function render($request, Exception $exception)
     {
-        $whoops = new \Whoops\Run;
-    
-        if ($request->ajax()) {
-            $whoops->pushHandler(new \Whoops\Handler\JsonResponseHandler());
-        } else {
-            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
-        }
-    
-        return new \Illuminate\Http\Response(
-            $whoops->handleException($e),
-            $e->getStatusCode(),
-            $e->getHeaders()
-        );
+        return parent::render($request, $exception);
     }
-
 }
