@@ -142,7 +142,7 @@ class PhotoController extends Controller
         $photo->tags()->sync($tagIds);
 
         // Push to Algolia, auto-index disabled because event is fired before pivot table sync.
-        $photo->pushToIndex();
+        $photo->searchable();
 
         return back()
             ->withSuccess('Photo updated successfully!');
