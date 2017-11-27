@@ -171,10 +171,11 @@ return [
         /**
          * WthatTheTag and other 3rd party Service Providers
          */
-        \Bkwld\Croppa\ServiceProvider::class,
-        \Cviebrock\EloquentSluggable\ServiceProvider::class,
-        \Yajra\Datatables\DatatablesServiceProvider::class,
-        \AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
+        Bkwld\Croppa\ServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
     ],
 
     /*
@@ -228,6 +229,7 @@ return [
 
         //WthatTheTag
         'Croppa' => \Bkwld\Croppa\Facade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

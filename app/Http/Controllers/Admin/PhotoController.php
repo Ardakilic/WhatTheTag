@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Photo;
 use App\User;
 use App\Tag;
-use Datatables;
+//use Datatables;
 use Validator;
 use Croppa;
 
@@ -37,7 +37,7 @@ class PhotoController extends Controller
                 'photos.updated_at as updated_at'
             ]);
 
-        return Datatables::of($photos)
+        return datatables()->of($photos)
             ->addColumn('action', function ($photo) {
                 return '<a href="/admin/photos/edit/' . $photo->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="/admin/photos/delete/' . $photo->id . '" class="btn btn-xs btn-primary delete-button"><i class="glyphicon glyphicon-remove"></i> Delete</a>';
             })

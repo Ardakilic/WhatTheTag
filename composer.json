@@ -9,18 +9,19 @@
   "type": "project",
   "require": {
     "php": ">=5.5.9",
-    "laravel/framework": "5.3.*",
-    "cviebrock/eloquent-sluggable": "^4.1",
+    "laravel/framework": "5.4.*",
+    "cviebrock/eloquent-sluggable": "^4.2",
     "bkwld/croppa": "~4",
-    "yajra/laravel-datatables-oracle": "~6.0",
+    "yajra/laravel-datatables-oracle": "8.*",
     "filp/whoops": " ~1.0",
     "league/flysystem-aws-s3-v3": "~1.0",
-    "algolia/algoliasearch-laravel": "^1.7"
+    "algolia/algoliasearch-laravel": "^1.7",
+    "laravel/tinker": "^1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~4.0",
+    "phpunit/phpunit": "~5.7",
     "symfony/dom-crawler": "3.1.*",
     "symfony/css-selector": "3.1.*"
   },
