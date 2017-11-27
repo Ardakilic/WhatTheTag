@@ -44,6 +44,8 @@ class PhotoController extends Controller
             ->editColumn('image', '<a href="#" data-modal-type="admin-modal" data-toggle="modal" data-target="#myModal" data-img-url="{{ (config(\'filesystems.cloud\') == \'s3\' ? config(\'whatthetag.s3_storage_cdn_domain\') : \'\') . config(\'whatthetag.uploads_folder\') }}/{{ $image }}" data-img-title="{{ $title }}"><img class="thumbnail" data-toggle="tooltip" rel="thumbnail" title="Click for bigger version" src="{{ Croppa::url(\'/\'. config(\'whatthetag.uploads_folder\') .\'/\'.$image, 150, 120) }}" /></a>')
             ->editColumn('name', '<a href="/admin/users/edit/{{ $user_id }}">{{ $name }}</a>')
             ->removeColumn('user_id')
+            //https://github.com/yajra/laravel-datatables/issues/949#issuecomment-275834424
+            ->rawColumns(['action', 'image', 'name'])
             ->make(true);
     }
 

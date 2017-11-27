@@ -42,6 +42,8 @@ class UserController extends Controller
             ->addColumn('action', function ($user) {
                 return '<a href="/admin/users/edit/' . $user->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="/admin/users/delete/' . $user->id . '" class="btn btn-xs btn-primary delete-button"><i class="glyphicon glyphicon-remove"></i> Delete</a>';
             })
+            //https://github.com/yajra/laravel-datatables/issues/949#issuecomment-275834424
+            ->rawColumns(['action'])
             ->make(true);
 
     }
