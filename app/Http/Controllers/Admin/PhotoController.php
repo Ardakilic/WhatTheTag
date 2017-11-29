@@ -54,7 +54,7 @@ class PhotoController extends Controller
 
     public function getEdit($id)
     {
-        $photo = Photo::with('user', 'tags')->find($id);
+        $photo = Photo::with(['user', 'tags'])->find($id);
         if (!$photo) {
             return back()
                 ->withError('Photo not found.');
@@ -72,7 +72,7 @@ class PhotoController extends Controller
 
     public function postEdit($id, Request $request)
     {
-        $photo = Photo::with('tags')->find($id);
+        $photo = Photo::with(['user', 'tags'])->find($id);
 
         if (!$photo) {
             return back()

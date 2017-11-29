@@ -170,6 +170,7 @@ class PhotoController extends Controller
         $photo->tags()->attach($tagIds);
 
         // Re-Push to Algolia, auto-index disabled because event is fired before pivot table sync.
+        $photo->load(['user', 'tags']); //lazy load is required because searchable doesn't understand then
         $photo->searchable();
 
         return back()
