@@ -11,7 +11,7 @@
     "php": ">=7.0.0",
     "bkwld/croppa": "~4",
     "cviebrock/eloquent-sluggable": "^4.3",
-    "fideloper/proxy": "~3.3",
+    "fideloper/proxy": "~4.0",
     "laravel/framework": "5.5.*",
     "laravel/scout": "^3.0",
     "algolia/algoliasearch-client-php": "^2.0.0",
