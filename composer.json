@@ -9,23 +9,23 @@
   "type": "project",
   "require": {
     "php": ">=7.0.0",
-    "bkwld/croppa": "~4",
-    "cviebrock/eloquent-sluggable": "^4.3",
-    "fideloper/proxy": "~3.3",
-    "laravel/framework": "5.5.*",
-    "laravel/scout": "^3.0",
-    "algolia/algoliasearch-client-php": "^1.23",
-    "laravel/tinker": "~1.0",
-    "league/flysystem-aws-s3-v3": "~1.0",
-    "yajra/laravel-datatables-oracle": "8.*"
+    "bkwld/croppa": "4.7.0",
+    "cviebrock/eloquent-sluggable": "4.3.0",
+    "fideloper/proxy": "3.3.4",
+    "laravel/framework": "5.5.22",
+    "laravel/scout": "3.0.11",
+    "algolia/algoliasearch-client-php": "1.23.1",
+    "laravel/tinker": "1.0.2",
+    "league/flysystem-aws-s3-v3": "1.0.18",
+    "yajra/laravel-datatables-oracle": "8.3.2"
   },
   "require-dev": {
-    "filp/whoops": "~2.0",
-    "fzaninotto/faker": "~1.4",
-    "mockery/mockery": "~1.0",
-    "phpunit/phpunit": "~5.7",
-    "symfony/dom-crawler": "3.1.*",
-    "symfony/css-selector": "3.1.*"
+    "filp/whoops": "2.3.2",
+    "fzaninotto/faker": "1.8.0",
+    "mockery/mockery": "1.2.2",
+    "phpunit/phpunit": "5.7.27",
+    "symfony/dom-crawler": "3.1.10",
+    "symfony/css-selector": "3.1.10"
   },
   "autoload": {
     "classmap": [
