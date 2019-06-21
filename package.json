@@ -43,7 +43,7 @@
     "bootstrap-tagsinput": "^0.7.1",
     "font-awesome": "^4.7.0",
     "datatables": "^1.10.13",
-    "datatables-bootstrap3-plugin": "^0.5.0",
+    "datatables-bootstrap3-plugin": "^0.6.0",
     "social-share-js": "^1.0.4",
     "bootstrap-social": "^5.1.1",
     "dropify": "^0.2.1"
