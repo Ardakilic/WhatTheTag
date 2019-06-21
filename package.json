@@ -30,7 +30,7 @@
     "url": "https://github.com/ardakilic/whatthetag.git"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-less": "^3.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-notify": "^2.2.0",
