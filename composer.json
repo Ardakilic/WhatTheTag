@@ -16,7 +16,7 @@
     "laravel/scout": "^3.0",
     "algolia/algoliasearch-client-php": "^2.0.0",
     "laravel/tinker": "~1.0",
-    "league/flysystem-aws-s3-v3": "~1.0",
+    "league/flysystem-aws-s3-v3": "~2.0",
     "yajra/laravel-datatables-oracle": "8.*"
   },
   "require-dev": {
