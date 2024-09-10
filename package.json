@@ -33,7 +33,7 @@
     "gulp": "^3.9.1",
     "gulp-less": "^5.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-notify": "^4.0.0",
+    "gulp-notify": "^5.0.0",
     "del": "^7.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-clean-css": "^2.2.1",
