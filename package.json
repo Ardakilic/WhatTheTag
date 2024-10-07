@@ -34,7 +34,7 @@
     "gulp-less": "^5.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-notify": "^4.0.0",
-    "del": "^7.0.0",
+    "del": "^8.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-clean-css": "^2.2.1",
     "run-sequence": "^1.2.2",
