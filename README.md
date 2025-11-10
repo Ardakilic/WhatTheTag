@@ -1,3 +1,12 @@
+Deprecation Notice
+--------
+
+Use Immich instead:
+
+https://immich.app/
+https://github.com/immich-app/immich
+
+
 ```
  _       ____          __ ________       ______           
 | |     / / /_  ____ _/ //_  __/ /_  ___/_  __/___ _____ _
